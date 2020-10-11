@@ -1,10 +1,10 @@
 import React from "react";
 
 
-export const LoginPage = () =>{
+export const SignUp = () =>{
     return(
         <>
-            <h1>Login Page</h1>
+            <h1>SignUp Page</h1>
         </>
     );
 }

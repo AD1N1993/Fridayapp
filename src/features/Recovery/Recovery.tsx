@@ -1,10 +1,10 @@
 import React from "react";
 
 
-export const SomePage = () =>{
+export const Recovery = () =>{
     return(
         <>
-            <h1>Some Page</h1>
+            <h1>Recovery Page</h1>
         </>
     );
 }

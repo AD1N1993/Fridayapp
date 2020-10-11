@@ -1,0 +1,20 @@
+.inputText{
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  outline: none;
+  height: 24px;
+  width: 300px;
+  color: #535151;
+  font-size: 16px;
+  &:focus{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+}
+
+.error{
+  color: red;
+  border: 1px solid #ff0000;
+  &:focus{
+    box-shadow: 0 0 10px rgba(129, 0, 0, 0.5);
+  }
+}

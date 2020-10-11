@@ -6,7 +6,7 @@ const initialState: InitialStateType = () => {
 
 }
 
-export const someReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
+export const initiateReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
     switch (action) {
         default:
             return {...state}
