@@ -6,12 +6,14 @@ import {Login} from "../features/Login/Login";
 import {SignUp} from "../features/SignUp/SignUp";
 import {Recovery} from "../features/Recovery/Recovery";
 import {Initiate} from "../features/Initiate/Initiate";
+import {Header} from "../components/Header/Header";
 
 function App() {
     return (
         <div className="App">
+            <Header/>
             <Switch>
-                <Route exact path={"/"} render={() => <Profile/>}/>
+                <Route exact path={["/Fridayapp", "/"]} render={() => <Profile/>}/>
                 <Route path={'/login'} render={() => <Login/>}/>
                 <Route path={'/signup'} render={() => <SignUp/>}/>
                 <Route path={'/recovery'} render={() => <Recovery/>}/>

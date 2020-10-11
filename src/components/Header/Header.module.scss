@@ -1,0 +1,22 @@
+.header{
+  height: 50px;
+  border: 1px solid #000000;
+}
+
+.navList{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navLink{
+  text-decoration: none;
+  color: black;
+  &:hover{
+    color: #1ea7fd;
+  }
+}
+
+.linkItem{
+  list-style: none;
+  padding: 0 5px 0 5px;
+}
