@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "50ed65626214b893d50922c3f912ae43",
+    "revision": "6a9fc01a94dc743f626371ce49a1e305",
     "url": "/Fridayapp/index.html"
   },
   {
-    "revision": "74cf29f0f38e3bc6b6cb",
+    "revision": "aac70ca78ff63e012387",
     "url": "/Fridayapp/static/css/main.31d3e2d1.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Fridayapp/static/js/2.3e745bcd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "74cf29f0f38e3bc6b6cb",
-    "url": "/Fridayapp/static/js/main.b04bfd33.chunk.js"
+    "revision": "aac70ca78ff63e012387",
+    "url": "/Fridayapp/static/js/main.5cdf3b4e.chunk.js"
   },
   {
     "revision": "dbf2bed243d3509a5b46",
