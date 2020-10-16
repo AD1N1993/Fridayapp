@@ -16,4 +16,4 @@ export const Button = (props:ButtonTypeProps) =>{
             {props.value}
         </button>
     );
-}
+}//lalala
