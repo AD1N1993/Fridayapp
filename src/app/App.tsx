@@ -7,8 +7,7 @@ import {SignUp} from "../features/SignUp/SignUp";
 import {Recovery} from "../features/Recovery/Recovery";
 import {Initiate} from "../features/Initiate/Initiate";
 import {Header} from "../components/Header/Header";
-//
-function App() {
+
     return (
         <div className="App">
             <Header/>
