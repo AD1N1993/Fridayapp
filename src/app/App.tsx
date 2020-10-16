@@ -14,10 +14,10 @@ function App() {
             <Header/>
             <Switch>
                 <Route exact path={["/Fridayapp", "/"]} render={() => <Profile/>}/>
-                <Route path={'/login'} render={() => <Login/>}/>
-                <Route path={'/signup'} render={() => <SignUp/>}/>
-                <Route path={'/recovery'} render={() => <Recovery/>}/>
-                <Route path={'/initiate'} render={() => <Initiate/>}/>
+                <Route path={"/login"} render={() => <Login/>}/>
+                <Route path={"/signup"} render={() => <SignUp/>}/>
+                <Route path={"/recovery"} render={() => <Recovery/>}/>
+                <Route path={"/initiate"} render={() => <Initiate/>}/>
                 <Route path={"/404"} render={() => <h1>Error 404. Page not found.</h1>}/>
                 <Redirect from={"*"} to={"/404"}/>
             </Switch>
