@@ -5,14 +5,14 @@ type ButtonTypeProps = {
     value:string
     action: ()=> void
     mode?: "red"
-    type?:string
+    type?:"button" | "submit" | "reset" | undefined
 }
 
 export const Button = (props:ButtonTypeProps) =>{
     return(
         <button
             className={props.mode === "red" ? `${s.btn}  ${s.error}`:  s.btn}
-            onClick={props.action} type={"submit"}>
+            onClick={props.action} type={props.type}>
             {props.value}
         </button>
     );

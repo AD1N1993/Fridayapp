@@ -7,7 +7,7 @@ export const Profile = () =>{
     return(
         <>
             <h1>Profile Page</h1>
-            <InputText value={""} onChange={()=>{}} actionEnter={()=>{alert("enter")}}/>
+            <InputText value={""} onChange={()=>{}} actionEnter={()=>{alert("enter")}} type={"text"}/>
             <Button value={"click"} action={()=>{alert("click")}}/>
         </>
     );

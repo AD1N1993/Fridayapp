@@ -30,9 +30,10 @@ export const Recovery = () => {debugger
             <h2>Forget password?</h2>
             <p>Please enter your email address and password reset information will be sent to it.</p>
             <form onSubmit={formik.handleSubmit}>
-                <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange} actionEnter={()=>{}}/>
+                <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange} actionEnter={()=>{}} type={"text"}/>
                 {formik.errors.email ? <div style={{color: "red"}}>{formik.errors.email}</div> : null}
-                <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange} actionEnter={()=>{}}/>
+                <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange} actionEnter={()=>{}} type={"text"}/>
+                <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange} actionEnter={()=>{}} type={"checkbox"}/>
                 {formik.errors.email ? <div style={{color: "red"}}>{formik.errors.email}</div> : null}
                 <Button value={"send"} action={formik.handleSubmit} type={"submit"} />
 

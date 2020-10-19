@@ -7,6 +7,9 @@ type InputTextTypeProps = {
     actionEnter?: () => void;
     error?: boolean
     name?:string
+    placeholder?:string
+    type:string
+
 }
 
 export const InputText = (props: InputTextTypeProps) => {
@@ -20,13 +23,13 @@ export const InputText = (props: InputTextTypeProps) => {
     return (
         <>
             <input className={`${s.inputText} ${props.error && props.value !=="" ? s.error : ""}`}
-                   type="text"
+                   type={props.type}
                    value={props.value}
                    onChange={props.onChange}
                    onKeyPress={actionEnter}
                    name={props.name}
+                   placeholder={props.placeholder}
             />
-            <span>{}</span>
         </>
     );
 }
