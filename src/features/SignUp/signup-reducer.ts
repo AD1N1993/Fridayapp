@@ -17,7 +17,7 @@ export const signupReducer = (state: InitialStateType = initialState, action: Ac
 
 
 //Thunk creators
-export const initializedAppTC = ():ThunkType =>{
+export const initializedAppTC = ():ThunksType =>{
     return async (dispatch)=>{
 
     }
@@ -26,9 +26,9 @@ export const initializedAppTC = ():ThunkType =>{
 //types
 type InitialStateType = {};
 
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed';
 
-type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
+
+type ThunksType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
 
 
 

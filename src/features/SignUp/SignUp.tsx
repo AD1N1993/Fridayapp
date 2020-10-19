@@ -1,10 +1,16 @@
 import React from "react";
+import styles from "./SignUp.module.scss"
 
 
-export const SignUp = () =>{
-    return(
+export const SignUp = () => {
+    return (
         <>
-            <h1>SignUp Page</h1>
+            <h2>Registration</h2>
+            <form>
+                <input placeholder={'email'}/>
+                <input placeholder={'password'} type='password'/>
+                <button>register</button>
+            </form>
         </>
     );
 }
