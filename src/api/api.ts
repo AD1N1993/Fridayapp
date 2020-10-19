@@ -2,17 +2,23 @@ import axios from "axios";
 
 
 const instance = axios.create({
-
+    baseURL: "https://neko-back.herokuapp.com/2.0"
 })
 
 export const authAPI = {
-    me() {
-
+    forgotPassword(email: string) {
+        return instance.post("/auth/forgot", {
+            email,
+            "from": "test-front-admin <ai73a@yandex.by>",
+            "message": "<div style= 'background-color: lime; padding: 15px'> " +
+                "password recovery link: <a href='http://localhost:3000/Fridayapp#/initiate/$token$'> " +
+                "Click the link to restore access to your account " +
+                "</a>" +
+                "</div>"
+        })
     },
-    login(email: string, password: string, rememberMe: boolean = false) {
+    setNewPassword(password:string,resetPasswordToken:string) {
+        return instance.post("/auth/set-new-password",{password,resetPasswordToken})
+    }
 
-    },
-    logout() {
-
-    },
 }

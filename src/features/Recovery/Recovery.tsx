@@ -1,17 +1,29 @@
-import React, {useState} from "react";
+import React from "react";
 import {InputText} from "../../components/InputText/InputText";
 import {Button} from "../../components/Button/Button";
 import {useFormik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import {recoveryRequestTC} from "./recovery-reducer";
+import {Redirect} from 'react-router-dom';
+import {AppRootStateType} from "../../app/store";
+import {Preloader} from "../../components/Preloader/Preloader";
+import {useRedirect} from "../../utils/customHooks";
 
 
-export const Recovery = () => {debugger
+export const Recovery = () => {
+    const networkErrorMessage = useSelector<AppRootStateType, string>(state => state.recovery.error);
+    const status = useSelector<AppRootStateType, boolean>(state => state.recovery.status);
+    const shipment = useSelector<AppRootStateType, boolean>(state => state.recovery.shipment);
+    const redirect = useRedirect(shipment);
+    debugger
+    const dispatch= useDispatch();
+
     const formik = useFormik({
         initialValues: {
             email: '',
         },
         onSubmit: values => {
-            // dispatch(loginTC(values));
-            alert(values.email)
+          dispatch(recoveryRequestTC(values.email))
             formik.resetForm();
         },
         validate: (values) => {
@@ -24,19 +36,25 @@ export const Recovery = () => {debugger
             return errors;
         },
     })
+
+    if (redirect) {
+        return <Redirect to={"/login"}/>
+    }
+    if (shipment) {
+        return <div>Instructions for password recovery have been sent to your email address.</div>
+    }
+
     return (
         <>
+            {status ? <Preloader/>: ""}
             <h1>Recovery Page</h1>
             <h2>Forget password?</h2>
-            <p>Please enter your email address and password reset information will be sent to it.</p>
+            <p>Please enter your email address.</p>
             <form onSubmit={formik.handleSubmit}>
                 <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange} actionEnter={()=>{}} type={"text"}/>
                 {formik.errors.email ? <div style={{color: "red"}}>{formik.errors.email}</div> : null}
-                <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange} actionEnter={()=>{}} type={"text"}/>
-                <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange} actionEnter={()=>{}} type={"checkbox"}/>
-                {formik.errors.email ? <div style={{color: "red"}}>{formik.errors.email}</div> : null}
-                <Button value={"send"} action={formik.handleSubmit} type={"submit"} />
-
+                <span>{networkErrorMessage}</span>
+                <Button value={"send"} action={formik.handleSubmit} type={"submit"}  disabled={status} mode={status?"red":null} />
             </form>
         </>
     );
