@@ -8,7 +8,6 @@ type ButtonTypeProps = {
 }
 
 export const Button = (props:ButtonTypeProps) =>{
-    //Крутая кнопка
     return(
         <button
             className={props.mode === "red" ? `${s.btn}  ${s.error}`:  s.btn}
