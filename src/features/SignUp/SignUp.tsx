@@ -18,6 +18,7 @@ type FormikErrorType = {
 export const SignUp = () => {
     const isRegistered = useSelector<AppRootStateType, boolean>(state => state.signup.isRegistered)
     const registrationLoad = useSelector<AppRootStateType, boolean>(state => state.signup.registrationLoad)
+    const registrationError = useSelector<AppRootStateType, null | string>(state => state.signup.registrationError)
     const dispatch = useDispatch()
 
     const formik = useFormik({
@@ -71,6 +72,7 @@ export const SignUp = () => {
             <div className={styles.linkToLogin}>
                 <a href={'/login'}>Login</a>
             </div>
+            {registrationError && <div className={styles.registrationError}>{registrationError}</div>}
         </>
     );
 }
