@@ -7,7 +7,7 @@ import {registrationTC} from "./signup-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../app/store";
-import {Preloader} from "../../components/Preloader1/Preloader";
+import { Preloader } from "../../components/Preloader/Preloader";
 
 type FormikErrorType = {
     email?: string

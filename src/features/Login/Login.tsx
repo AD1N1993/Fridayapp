@@ -7,7 +7,7 @@ import {loginTC, RequestStatusType} from "./auth-reducer";
 import {InputText} from "../../components/InputText/InputText";
 import {Button} from "../../components/Button/Button";
 import styles from "./Login.module.scss"
-import {PreLoader2} from "../../components/PreLoader2/PreLoader2";
+import {Preloader} from "../../components/Preloader/Preloader";
 
 
 export const Login = () => {
@@ -70,7 +70,7 @@ export const Login = () => {
                            }} type={"password"}/>
                 {formik.errors.password ? <div style={{color: "red"}}>{formik.errors.password}</div> : null}
                 {errorLogin && <div className={styles.errorLogin}>{errorLogin}</div>}
-                {status === 'loading' && <PreLoader2/>}
+                {status === 'loading' && <Preloader/>}
                 <input name={"rememberMe"} checked={formik.values.rememberMe}
                        onChange={formik.handleChange} type={"checkbox"}/>
                 <Button value={"send"} action={formik.handleSubmit} type={"submit"}/>

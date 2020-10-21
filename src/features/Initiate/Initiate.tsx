@@ -6,7 +6,7 @@ import {Redirect, useParams} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../app/store";
 import {resetPasswordTC} from "../Recovery/recovery-reducer";
-import {Preloader3} from "../../components/Preloader3/Preloader3";
+import {Preloader} from "../../components/Preloader/Preloader";
 import {useRedirect} from "../../utils/customHooks";
 
 
@@ -50,7 +50,7 @@ export const Initiate = () => {
     }
     return (
         <>
-            {status ? <Preloader3/> : ""}
+            {status ? <Preloader/> : ""}
             <h1>Password recovery page</h1>
             <p>Please enter your new password.</p>
             <form onSubmit={formik.handleSubmit}>
