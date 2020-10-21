@@ -28,8 +28,32 @@ export const authAPI = {
     },
     login(data: LoginParamsType) {
         return instance.post(`/auth/login`, data)
+    },
+    registered(data: RegisteredParamsType) {
+        return  instance.post<RegistrationResponseType>('/auth/register', data)
     }
 }
 
 //nya-admin@nya.nya
 //1qazxcvBG
+
+
+//types
+export type RegisteredParamsType = {
+    email: string,
+    password: string
+}
+export type RegistrationResponseType = {
+    addedUser: {
+        created: string
+        email: string
+        isAdmin: boolean
+        name: string
+        publicCardPacksCount: number
+        rememberMe: boolean
+        updated: string
+        verified: boolean
+        __v: number
+        _id: string
+    }
+}
