@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {InputText} from "../../components/InputText/InputText";
 import {Button} from "../../components/Button/Button";
 import {useFormik} from "formik";
@@ -12,8 +12,8 @@ import {useRedirect} from "../../utils/customHooks";
 
 export const Initiate = () => {
 
-    const status = useSelector<AppRootStateType, boolean>(state => state.recovery.status);
-    const shipment = useSelector<AppRootStateType, boolean>(state => state.recovery.shipment);
+    const status = useSelector<AppRootStateType, boolean>(state => state.recovery.isShowPreloader);
+    const shipment = useSelector<AppRootStateType, boolean>(state => state.recovery.isShipment);
     const redirect = useRedirect(shipment);
     const dispatch = useDispatch();
     const {token} = useParams();

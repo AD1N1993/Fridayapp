@@ -9,15 +9,15 @@ const RECOVERY_SET_STATUS = "RECOVERY_SET_STATUS";
 
 const initialState: InitialRecoveryStateType = {
     error: "",
-    shipment: false,
-    status: false
+    isShipment: false,
+    isShowPreloader: false
 }
 
 export const recoveryReducer = (state: InitialRecoveryStateType = initialState, action: ActionsTypes): InitialRecoveryStateType => {
     switch (action.type) {
         case RECOVERY_SET_SHIPMENT:
             return {
-                ...state, shipment: action.shipment
+                ...state, isShipment: action.shipment
             }
         case RECOVERY_SHOW_ERROR:
             return {
@@ -25,7 +25,7 @@ export const recoveryReducer = (state: InitialRecoveryStateType = initialState, 
             }
         case RECOVERY_SET_STATUS:
             return {
-                ...state, status: action.status
+                ...state, isShowPreloader: action.status
             }
         default:
             return {...state}
@@ -33,32 +33,32 @@ export const recoveryReducer = (state: InitialRecoveryStateType = initialState, 
 }
 
 //Action creators
-const setShipment = (shipment: boolean) => ({type: RECOVERY_SET_SHIPMENT, shipment} as const);
+const setIsShipment = (shipment: boolean) => ({type: RECOVERY_SET_SHIPMENT, shipment} as const);
 const showError = (error: string) => ({type: RECOVERY_SHOW_ERROR, error} as const);
-const setStatus = (status: boolean) => ({type: RECOVERY_SET_STATUS, status} as const);
+const setIsShowPreloader = (status: boolean) => ({type: RECOVERY_SET_STATUS, status} as const);
 
 //Thunk creators
 export const recoveryRequestTC = (email: string): ThunkType => {
     return async (dispatch) => {
-        dispatch(setStatus(true))
+        dispatch(setIsShowPreloader(true))
         try {
             await authAPI.forgotPassword(email);
-            dispatch(setShipment(true));
+            dispatch(setIsShipment(true));
+            dispatch(setIsShowPreloader(false));
         } catch (error) {
             dispatch(showError(error.response.data.error));
         }
-        dispatch(setStatus(false))
-        dispatch(setShipment(false));
+
     }
 }
 
 export const resetPasswordTC = (newPassword: string, token: string): ThunkType => {
     return async (dispatch) => {
-        dispatch(setStatus(true))
+        dispatch(setIsShowPreloader(true))
         try {
             await authAPI.setNewPassword(newPassword, token);
-            dispatch(setShipment(true))
-            dispatch(setStatus(false))
+            dispatch(setIsShipment(true))
+            dispatch(setIsShowPreloader(false))
         } catch (error) {
             console.log(error.response.data.error);
         }
@@ -68,8 +68,8 @@ export const resetPasswordTC = (newPassword: string, token: string): ThunkType =
 //types
 export type InitialRecoveryStateType = {
     error: string
-    shipment: boolean
-    status: boolean
+    isShipment: boolean
+    isShowPreloader: boolean
 };
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -78,6 +78,6 @@ type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTy
 
 
 type ActionsTypes =
-    | ReturnType<typeof setShipment>
+    | ReturnType<typeof setIsShipment>
     | ReturnType<typeof showError>
-    | ReturnType<typeof setStatus>
+    | ReturnType<typeof setIsShowPreloader>

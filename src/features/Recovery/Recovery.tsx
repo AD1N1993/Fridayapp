@@ -12,18 +12,18 @@ import {useRedirect} from "../../utils/customHooks";
 
 export const Recovery = () => {
     const networkErrorMessage = useSelector<AppRootStateType, string>(state => state.recovery.error);
-    const status = useSelector<AppRootStateType, boolean>(state => state.recovery.status);
-    const shipment = useSelector<AppRootStateType, boolean>(state => state.recovery.shipment);
+    const status = useSelector<AppRootStateType, boolean>(state => state.recovery.isShowPreloader);
+    const shipment = useSelector<AppRootStateType, boolean>(state => state.recovery.isShipment);
     const redirect = useRedirect(shipment);
-    debugger
-    const dispatch= useDispatch();
+
+    const dispatch = useDispatch();
 
     const formik = useFormik({
         initialValues: {
             email: '',
         },
         onSubmit: values => {
-          dispatch(recoveryRequestTC(values.email))
+            dispatch(recoveryRequestTC(values.email))
             formik.resetForm();
         },
         validate: (values) => {
@@ -42,19 +42,23 @@ export const Recovery = () => {
     }
     if (shipment) {
         return <div>Instructions for password recovery have been sent to your email address.</div>
+
     }
 
     return (
         <>
-            {status ? <Preloader/>: ""}
+            {status ? <Preloader/> : ""}
             <h1>Recovery Page</h1>
             <h2>Forget password?</h2>
             <p>Please enter your email address.</p>
             <form onSubmit={formik.handleSubmit}>
-                <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange} actionEnter={()=>{}} type={"text"}/>
+                <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange}
+                           actionEnter={() => {
+                           }} type={"text"}/>
                 {formik.errors.email ? <div style={{color: "red"}}>{formik.errors.email}</div> : null}
                 <span>{networkErrorMessage}</span>
-                <Button value={"send"} action={formik.handleSubmit} type={"submit"}  disabled={status} mode={status?"red":null} />
+                <Button value={"send"} action={formik.handleSubmit} type={"submit"} disabled={status}
+                        mode={status ? "red" : null}/>
             </form>
         </>
     );
