@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {recoveryRequestTC} from "./recovery-reducer";
 import {Redirect} from 'react-router-dom';
 import {AppRootStateType} from "../../app/store";
-import {Preloader} from "../../components/Preloader/Preloader";
+import {Preloader3} from "../../components/Preloader3/Preloader3";
 import {useRedirect} from "../../utils/customHooks";
 
 
@@ -47,7 +47,7 @@ export const Recovery = () => {
 
     return (
         <>
-            {status ? <Preloader/> : ""}
+            {status ? <Preloader3/> : ""}
             <h1>Recovery Page</h1>
             <h2>Forget password?</h2>
             <p>Please enter your email address.</p>
