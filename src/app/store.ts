@@ -3,10 +3,11 @@ import thunkMiddleware from 'redux-thunk'
 import {appReducer} from "./app-reducer";
 import {recoveryReducer} from "../features/Recovery/recovery-reducer";
 import {initiateReducer} from "../features/Initiate/initiate-reducer";
+import {authReducer} from "../features/Login/auth-reducer";
 
 const rootReducer = combineReducers({
     app: appReducer,
-    login: appReducer,
+    login: authReducer,
     signup: appReducer,
     recovery: recoveryReducer,
     initiate: initiateReducer

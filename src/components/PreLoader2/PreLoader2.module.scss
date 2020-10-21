@@ -1,0 +1,10 @@
+.preLoader {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    img {
+        width: 400px;
+        position: absolute;
+        opacity: 0.5
+    }
+}
