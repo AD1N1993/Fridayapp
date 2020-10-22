@@ -19,7 +19,6 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
         case "SET_STATUS":
             return {...state, status: action.status}
         default:
-            debugger
             return state
     }
 }
@@ -37,7 +36,6 @@ export const setStatusAC = (status: RequestStatusType) =>
 //Thunk creators
 export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTypes>) => {
     dispatch(setStatusAC('loading'))
-    debugger
     authAPI.login(data)
         .then((res) => {
             if (res.status === 200) {
@@ -48,11 +46,25 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
             const error = e.response.data.error
             // console.log('Error.', {...e})
             dispatch(setLoginErrorAC(error))
+            setTimeout(() => dispatch(setLoginErrorAC("")), 5000)
         })
         .finally(() => {
                 dispatch(setStatusAC('succeeded'))
             }
         )
+}
+
+export const logoutTC = () => (dispatch: Dispatch<ActionsTypes>) => {
+    dispatch(setStatusAC('loading'))
+    authAPI.logout()
+        .then((res) => {
+            if (res.status === 200) {
+                dispatch(setIsLoggedAC(false))
+            }
+        })
+        .finally(() => {
+            dispatch(setStatusAC('succeeded'))
+        })
 }
 
 //types
