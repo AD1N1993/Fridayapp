@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import './App.scss';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {Profile} from "../features/Profile/Profile";
 import {Login} from "../features/Login/Login";

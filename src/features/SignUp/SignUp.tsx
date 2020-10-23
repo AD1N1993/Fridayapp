@@ -52,7 +52,7 @@ export const SignUp = () => {
     if (registrationLoad) {
         return <Preloader/>
     }
-
+debugger
     return (
         <div className={s.formWrapper}>
             <h2>Registration</h2>

@@ -1,6 +1,7 @@
 import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "../../app/store";
 import {authAPI, RegisteredParamsType} from "../../api/api";
+import {setLoginErrorAC} from "../Login/auth-reducer";
 
 
 const initialState: InitialStateType = {
@@ -37,7 +38,8 @@ export const registrationTC = (data: RegisteredParamsType) => {
                 dispatch(setIsRegisteredAC(true))
             })
             .catch( (error) => {
-                setRegistrationErrorAC(error)
+                dispatch(setRegistrationErrorAC(error.response.data.error))
+                setTimeout(() => dispatch(setRegistrationErrorAC("")), 5000);
             })
             .finally( () => {
                 dispatch(setRegistrationLoadAC(false))

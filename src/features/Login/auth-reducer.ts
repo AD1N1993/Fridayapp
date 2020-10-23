@@ -46,7 +46,8 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
         .catch((e) => {
             const error = e.response.data.error
             dispatch(setLoginErrorAC(error))
-            setTimeout(() => dispatch(setLoginErrorAC("")), 5000)
+            setTimeout(() => dispatch(setLoginErrorAC("")), 5000);
+
         })
         .finally(() => {
                 dispatch(setStatusAC('succeeded'))
@@ -73,8 +74,9 @@ type InitialStateType = typeof initialState;
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed';
 
 // type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
-
-type ActionsTypes = ReturnType<typeof setIsLoggedAC> |
+export type SetIsLoggedType = ReturnType<typeof setIsLoggedAC>
+type ActionsTypes =
+    SetIsLoggedType |
     ReturnType<typeof setLoginErrorAC> |
     ReturnType<typeof setStatusAC>
 

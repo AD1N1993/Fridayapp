@@ -61,6 +61,7 @@ export const resetPasswordTC = (newPassword: string, token: string): ThunkType =
             dispatch(setIsShowPreloader(false))
         } catch (error) {
             dispatch(showError(error.response.data.error));
+            setTimeout(() => dispatch(showError("")), 5000);
         }
     }
 }

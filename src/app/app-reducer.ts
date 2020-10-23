@@ -2,6 +2,7 @@ import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "./store";
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
+import {SetIsLoggedType, setIsLoggedAC} from "../features/Login/auth-reducer";
 
 const initialState: InitialStateType = {
     isInitialized: false,
@@ -31,6 +32,7 @@ export const initializeAppTC = () => (dispatch: Dispatch<ActionsTypes>) => {
     authAPI.me()
         .then((res) => {
             dispatch(setStatusAppAC('succeeded'))
+            dispatch(setIsLoggedAC(true));
         })
         .catch((err) => {
             alert(err)
@@ -46,6 +48,7 @@ type ActionsTypes =
     | ReturnType<typeof setIsInitializedAC>
     | ReturnType<typeof setStatusAppAC>
     | ReturnType<typeof setAppErrorAC>
+    | SetIsLoggedType
 
 export type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
 
