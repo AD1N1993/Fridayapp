@@ -38,7 +38,6 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
     dispatch(setStatusAC('loading'))
     authAPI.login(data)
         .then((res) => {
-            debugger
             if (res.status === 200) {
                 dispatch(setIsLoggedAC(true))
             }
