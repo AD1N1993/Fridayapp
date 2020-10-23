@@ -38,13 +38,13 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
     dispatch(setStatusAC('loading'))
     authAPI.login(data)
         .then((res) => {
+            debugger
             if (res.status === 200) {
                 dispatch(setIsLoggedAC(true))
             }
         })
         .catch((e) => {
             const error = e.response.data.error
-            // console.log('Error.', {...e})
             dispatch(setLoginErrorAC(error))
             setTimeout(() => dispatch(setLoginErrorAC("")), 5000)
         })

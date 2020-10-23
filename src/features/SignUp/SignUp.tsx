@@ -5,16 +5,16 @@ import {useFormik} from "formik";
 import {Button} from "../../components/Button/Button";
 import {registrationTC} from "./signup-reducer";
 import {useDispatch, useSelector} from "react-redux";
-import {Redirect} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../app/store";
 import { Preloader } from "../../components/Preloader/Preloader";
 import s from "../../app/App.module.scss";
+
 
 type FormikErrorType = {
     email?: string
     password?: string
 }
-
 
 export const SignUp = () => {
     const isRegistered = useSelector<AppRootStateType, boolean>(state => state.signup.isRegistered)
@@ -70,7 +70,9 @@ export const SignUp = () => {
                 <Button disabled={false} type='submit' value='register' action={formik.handleSubmit}/>
             </form>
             <div className={styles.linkToLogin}>
-                <a href={'/login'}>Login</a>
+                <NavLink to='login'>
+                    <span>Login</span>
+                </NavLink>
             </div>
             {registrationError && <div className={styles.registrationError}>{registrationError}</div>}
         </div>

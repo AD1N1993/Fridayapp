@@ -34,6 +34,9 @@ export const authAPI = {
     },
     registered(data: RegisteredParamsType) {
         return  instance.post<RegistrationResponseType>('/auth/register', data)
+    },
+    me() {
+        return instance.post('auth/me')
     }
 }
 
