@@ -46,11 +46,25 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
             const error = e.response.data.error
             // console.log('Error.', {...e})
             dispatch(setLoginErrorAC(error))
+            setTimeout(() => dispatch(setLoginErrorAC("")), 5000)
         })
         .finally(() => {
                 dispatch(setStatusAC('succeeded'))
             }
         )
+}
+
+export const logoutTC = () => (dispatch: Dispatch<ActionsTypes>) => {
+    dispatch(setStatusAC('loading'))
+    authAPI.logout()
+        .then((res) => {
+            if (res.status === 200) {
+                dispatch(setIsLoggedAC(false))
+            }
+        })
+        .finally(() => {
+            dispatch(setStatusAC('succeeded'))
+        })
 }
 
 //types
