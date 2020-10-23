@@ -8,6 +8,7 @@ import {Redirect} from 'react-router-dom';
 import {AppRootStateType} from "../../app/store";
 import {Preloader} from "../../components/Preloader/Preloader";
 import {useRedirect} from "../../utils/customHooks";
+import s from "../../app/App.module.scss";
 
 
 export const Recovery = () => {
@@ -46,21 +47,20 @@ export const Recovery = () => {
     }
 
     return (
-        <>
+        <div className={s.formWrapper}>
             {status ? <Preloader/> : ""}
-            <h1>Recovery Page</h1>
-            <h2>Forget password?</h2>
+            <h2>Forgot password?</h2>
             <p>Please enter your email address.</p>
             <form onSubmit={formik.handleSubmit}>
                 <InputText name={"email"} value={formik.values.email} onChange={formik.handleChange}
                            actionEnter={() => {
                            }} type={"text"}/>
                 {formik.errors.email ? <div style={{color: "red"}}>{formik.errors.email}</div> : null}
-                <span>{networkErrorMessage}</span>
+                <p style={{color: "red"}}>{networkErrorMessage}</p>
                 <Button value={"send"} action={formik.handleSubmit} type={"submit"} disabled={status}
                         mode={status ? "red" : null}/>
             </form>
-        </>
+        </div>
     );
 }
 

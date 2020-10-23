@@ -47,8 +47,8 @@ export const recoveryRequestTC = (email: string): ThunkType => {
             dispatch(setIsShowPreloader(false));
         } catch (error) {
             dispatch(showError(error.response.data.error));
+            dispatch(setIsShowPreloader(false))
         }
-
     }
 }
 
@@ -60,7 +60,7 @@ export const resetPasswordTC = (newPassword: string, token: string): ThunkType =
             dispatch(setIsShipment(true))
             dispatch(setIsShowPreloader(false))
         } catch (error) {
-            console.log(error.response.data.error);
+            dispatch(showError(error.response.data.error));
         }
     }
 }

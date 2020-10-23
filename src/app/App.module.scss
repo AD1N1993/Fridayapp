@@ -1,7 +1,18 @@
-.errorLogin {
-  color: red;
+.App {
+  text-align: center;
+  font-family: 'Nanum Myeongjo', serif;
+  overflow: hidden;
+  height: 100vh;
+
 }
-.loginFormWrapper{
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -120px 0 auto;
+  height: 100%;
+}
+.formWrapper{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,3 +24,4 @@
   padding: 10px;
   border-radius: 5px;
 }
+

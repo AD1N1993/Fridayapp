@@ -8,7 +8,8 @@ import {InputText} from "../../components/InputText/InputText";
 import {Button} from "../../components/Button/Button";
 import styles from "./Login.module.scss"
 import {Preloader} from "../../components/Preloader/Preloader";
-
+import {InputCheckBox} from "../../components/InputCheckbox/InputCheckbox";
+import s from "../../app/App.module.scss"
 
 export const Login = () => {
 
@@ -25,6 +26,7 @@ export const Login = () => {
     }
 
     const formik = useFormik({
+
         initialValues: {
             email: "",
             password: "",
@@ -54,9 +56,9 @@ export const Login = () => {
     }
 
     return (
-        <>
+        <div className={s.formWrapper}>
             <h1>Login Page</h1>
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit} >
                 <InputText name={"email"} value={formik.values.email}
                            onChange={formik.handleChange}
                            placeholder={"Email"}
@@ -71,14 +73,14 @@ export const Login = () => {
                 {formik.errors.password ? <div style={{color: "red"}}>{formik.errors.password}</div> : null}
                 {errorLogin && <div className={styles.errorLogin}>{errorLogin}</div>}
                 {status === 'loading' && <Preloader/>}
-                <input name={"rememberMe"} checked={formik.values.rememberMe}
-                       onChange={formik.handleChange} type={"checkbox"}/>
+                <InputCheckBox checked={formik.values.rememberMe} changeStatus={formik.handleChange}
+                               value={"remember me"} name={"rememberMe"}/><br/>
                 <Button value={"send"} action={formik.handleSubmit} type={"submit"}/>
 
             </form>
             <NavLink className={""} to="recovery" activeClassName={""}>
-                <span className={""}> Forget Password?</span>
+                <span className={""}> Forgot password?</span>
             </NavLink>
-        </>
+        </div>
     );
 }

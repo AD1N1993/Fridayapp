@@ -8,6 +8,7 @@ import {AppRootStateType} from "../../app/store";
 import {resetPasswordTC} from "../Recovery/recovery-reducer";
 import {Preloader} from "../../components/Preloader/Preloader";
 import {useRedirect} from "../../utils/customHooks";
+import s from "../../app/App.module.scss";
 
 
 export const Initiate = () => {
@@ -15,6 +16,7 @@ export const Initiate = () => {
     const status = useSelector<AppRootStateType, boolean>(state => state.recovery.isShowPreloader);
     const shipment = useSelector<AppRootStateType, boolean>(state => state.recovery.isShipment);
     const redirect = useRedirect(shipment);
+    const networkErrorMessage = useSelector<AppRootStateType, string>(state => state.recovery.error);
     const dispatch = useDispatch();
     const {token} = useParams();
 
@@ -49,7 +51,7 @@ export const Initiate = () => {
         return <div>You have successfully restored your password.</div>
     }
     return (
-        <>
+        <div className={s.formWrapper}>
             {status ? <Preloader/> : ""}
             <h1>Password recovery page</h1>
             <p>Please enter your new password.</p>
@@ -64,7 +66,8 @@ export const Initiate = () => {
                 <Button value={"send"} action={formik.handleSubmit} type={"submit"} disabled={status}
                         mode={status ? "red" : null}/>
             </form>
-        </>
+            <span>{networkErrorMessage}</span>
+        </div>
     );
 }
 

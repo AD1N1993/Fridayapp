@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../app/store";
 import { Preloader } from "../../components/Preloader/Preloader";
+import s from "../../app/App.module.scss";
 
 type FormikErrorType = {
     email?: string
@@ -27,7 +28,6 @@ export const SignUp = () => {
             password: '',
         },
         onSubmit: values => {
-            debugger
             dispatch(registrationTC(values))
         },
         validate: (values) => {
@@ -54,7 +54,7 @@ export const SignUp = () => {
     }
 
     return (
-        <>
+        <div className={s.formWrapper}>
             <h2>Registration</h2>
             <form>
                 <InputText placeholder={'email'}
@@ -73,6 +73,6 @@ export const SignUp = () => {
                 <a href={'/login'}>Login</a>
             </div>
             {registrationError && <div className={styles.registrationError}>{registrationError}</div>}
-        </>
+        </div>
     );
 }

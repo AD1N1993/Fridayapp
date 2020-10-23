@@ -1,0 +1,45 @@
+.input {
+  display: none;
+}
+
+.checkbox {
+  position: relative;
+  color: #181717;
+  font-size: 20px;
+  &::before {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -30px;
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #cccccc;
+
+  }
+  &:hover{
+    border-bottom: 1px solid #008000;
+    &::before {
+      background-color: #dbdbdb;
+    }
+    &::after{
+      border: solid #008000;
+      border-width: 0 3px 3px 0;
+    }
+  }
+  transition: all 0.3s;
+}
+
+.active{
+  &::after{
+    position: absolute;
+    top: 20%;
+    left: -24px;
+    content: "";
+    width: 5px;
+    height: 10px;
+    border: solid #00a700;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+}
