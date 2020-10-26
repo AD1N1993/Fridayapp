@@ -13,18 +13,18 @@ const instance = axios.create({
 
 export const authAPI = {
     forgotPassword(email: string) {
-        return instance.post("/auth/forgot", {
+        return instance.post<ForgotPasswordResponseType>("/auth/forgot", {
             email,
             "from": "test-front-admin <ai73a@yandex.by>",
             "message": "<div style= 'background-color: #b8b8b8; padding: 15px'> " +
-                "password recovery link: <a href='http://localhost:3000/Fridayapp#/initiate/$token$'> " +
+                "password recovery link: <a href='https://ad1n1993.github.io/Fridayapp/#/initiate/$token$'> " +
                 "Click the link to restore access to your account " +
                 "</a>" +
                 "</div>"
         })
     },
     setNewPassword(password:string,resetPasswordToken:string) {
-        return instance.post("/auth/set-new-password",{password,resetPasswordToken})
+        return instance.post<{info:string}>("/auth/set-new-password",{password,resetPasswordToken})
     },
     login(data: LoginParamsType) {
         return instance.post(`/auth/login`, data)
@@ -48,6 +48,12 @@ export const authAPI = {
 export type RegisteredParamsType = {
     email: string,
     password: string
+}
+export type  ForgotPasswordResponseType = {
+    "info": string,
+    "success": boolean,
+    "answer": boolean,
+    "html": boolean
 }
 export type RegistrationResponseType = {
     addedUser: {
