@@ -39,6 +39,12 @@ export const authAPI = {
         return instance.post('auth/me')
     }
 }
+export const PacksAPI = {
+
+}
+export const CardsAPI = {
+
+}
 
 //nya-admin@nya.nya
 //1qazxcvBG
