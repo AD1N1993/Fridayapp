@@ -1,7 +1,6 @@
 import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "../../app/store";
 import {authAPI, RegisteredParamsType} from "../../api/api";
-import {setLoginErrorAC} from "../Login/auth-reducer";
 
 
 const initialState: InitialStateType = {
