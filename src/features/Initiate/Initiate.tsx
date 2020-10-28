@@ -9,11 +9,12 @@ import {resetPasswordTC} from "../Recovery/recovery-reducer";
 import {Preloader} from "../../components/Preloader/Preloader";
 import {useRedirect} from "../../utils/customHooks";
 import s from "../../app/App.module.scss";
+import {RequestStatusType} from "../../app/app-reducer";
 
 
 export const Initiate = () => {
 
-    const status = useSelector<AppRootStateType, boolean>(state => state.recovery.isShowPreloader);
+    const appStatus = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status);
     const shipment = useSelector<AppRootStateType, boolean>(state => state.recovery.isShipment);
     const redirect = useRedirect(shipment);
     const networkErrorMessage = useSelector<AppRootStateType, string>(state => state.recovery.error);
@@ -52,7 +53,7 @@ export const Initiate = () => {
     }
     return (
         <div className={s.formWrapper}>
-            {status ? <Preloader/> : ""}
+            {appStatus === "loading" ? <Preloader/> : ""}
             <h1>Password recovery page</h1>
             <p>Please enter your new password.</p>
             <form onSubmit={formik.handleSubmit}>
@@ -63,8 +64,8 @@ export const Initiate = () => {
                            actionEnter={() => {
                            }} type={"password"}/>
                 {formik.errors.password ? <div style={{color: "red"}}>{formik.errors.password}</div> : null}
-                <Button value={"send"} action={formik.handleSubmit} type={"submit"} disabled={status}
-                        mode={status ? "red" : null}/>
+                <Button value={"send"} action={formik.handleSubmit} type={"submit"} disabled={appStatus === "loading"}
+                        mode={appStatus === "loading" ? "red" : null}/>
             </form>
             <span>{networkErrorMessage}</span>
         </div>

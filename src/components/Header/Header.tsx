@@ -3,15 +3,16 @@ import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss"
 import {Button} from "../Button/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {logoutTC, RequestStatusType} from "../../features/Login/auth-reducer";
+import {logoutTC} from "../../features/Login/auth-reducer";
 import {AppRootStateType} from "../../app/store";
 import {Preloader} from "../Preloader/Preloader";
+import {RequestStatusType} from "../../app/app-reducer";
 
 export const Header = () => {
 
     const dispatch = useDispatch()
     const isLogged = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
-    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.login.status)
+    const appStatus = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
 
     const logout = () => {
         dispatch(logoutTC())
@@ -19,7 +20,7 @@ export const Header = () => {
 
     return (
         <>
-            {status === 'loading' && <Preloader/>}
+            {appStatus === 'loading' && <Preloader/>}
             <header className={s.header}>
                 <nav>
                     <ul className={s.navList}>

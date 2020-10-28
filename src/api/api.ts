@@ -40,10 +40,6 @@ export const authAPI = {
     }
 }
 
-//nya-admin@nya.nya
-//1qazxcvBG
-
-
 //types
 export type RegisteredParamsType = {
     email: string,

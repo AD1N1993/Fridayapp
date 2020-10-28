@@ -3,13 +3,14 @@ import {NavLink, Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../app/store";
 import {useFormik} from "formik";
-import {loginTC, RequestStatusType} from "./auth-reducer";
+import {loginTC} from "./auth-reducer";
 import {InputText} from "../../components/InputText/InputText";
 import {Button} from "../../components/Button/Button";
 import styles from "./Login.module.scss"
 import {Preloader} from "../../components/Preloader/Preloader";
 import {InputCheckBox} from "../../components/InputCheckbox/InputCheckbox";
 import s from "../../app/App.module.scss"
+import {RequestStatusType} from "../../app/app-reducer";
 
 export const Login = () => {
 
@@ -17,7 +18,7 @@ export const Login = () => {
 
     const isLogged = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
     const errorLogin = useSelector<AppRootStateType, string>(state => state.login.error)
-    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.login.status)
+    const appStatus = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
 
     type FormikErrorType = {
         email?: string
@@ -72,7 +73,7 @@ export const Login = () => {
                            }} type={"password"}/>
                 {formik.errors.password ? <div style={{color: "red"}}>{formik.errors.password}</div> : null}
                 {errorLogin && <div className={styles.errorLogin}>{errorLogin}</div>}
-                {status === 'loading' && <Preloader/>}
+                {appStatus === 'loading' && <Preloader/>}
                 <InputCheckBox checked={formik.values.rememberMe} changeStatus={formik.handleChange}
                                value={"remember me"} name={"rememberMe"}/><br/>
                 <Button value={"send"} action={formik.handleSubmit} type={"submit"}/>

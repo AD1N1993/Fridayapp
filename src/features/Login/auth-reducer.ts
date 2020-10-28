@@ -1,13 +1,11 @@
-import {ThunkAction} from "redux-thunk";
-import {AppRootStateType} from "../../app/store";
 import {Dispatch} from "redux";
 import {authAPI} from "../../api/api";
+import {setStatusAppAC} from "../../app/app-reducer";
 
 
 const initialState = {
     isLoggedIn: false,
     error: '',
-    status: 'idle' as RequestStatusType
 }
 
 export const authReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
@@ -16,8 +14,6 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
             return {...state, isLoggedIn: action.value}
         case "SET_LOGIN_ERROR":
             return {...state, error: action.error}
-        case "SET_STATUS":
-            return {...state, status: action.status}
         default:
             return state
     }
@@ -30,15 +26,13 @@ export const setIsLoggedAC = (value: boolean) =>
 export const setLoginErrorAC = (error: string) =>
     ({type: "SET_LOGIN_ERROR", error} as const)
 
-export const setStatusAC = (status: RequestStatusType) =>
-    ({type: "SET_STATUS", status} as const)
 
 //Thunk creators
 export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTypes>) => {
-    dispatch(setStatusAC('loading'))
+    dispatch(setStatusAppAC('loading'))
     authAPI.login(data)
         .then((res) => {
-            if (res.status === 200) {
+            if (res.statusText === "OK") {
                 dispatch(setIsLoggedAC(true))
             }
         })
@@ -49,35 +43,32 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
 
         })
         .finally(() => {
-                dispatch(setStatusAC('succeeded'))
+                dispatch(setStatusAppAC('succeeded'))
             }
         )
 }
 
 export const logoutTC = () => (dispatch: Dispatch<ActionsTypes>) => {
-    dispatch(setStatusAC('loading'))
+    dispatch(setStatusAppAC('loading'))
     authAPI.logout()
         .then((res) => {
-            if (res.status === 200) {
+            if (res.statusText === "OK") {
                 dispatch(setIsLoggedAC(false))
             }
         })
         .finally(() => {
-            dispatch(setStatusAC('succeeded'))
+            dispatch(setStatusAppAC('succeeded'))
         })
 }
 
 //types
 type InitialStateType = typeof initialState;
 
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed';
-
-// type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
 export type SetIsLoggedType = ReturnType<typeof setIsLoggedAC>
 type ActionsTypes =
     SetIsLoggedType |
     ReturnType<typeof setLoginErrorAC> |
-    ReturnType<typeof setStatusAC>
+    ReturnType<typeof setStatusAppAC>
 
 export type LoginParamsType = {
     email: string

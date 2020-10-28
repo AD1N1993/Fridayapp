@@ -37,6 +37,7 @@ export const initializeAppTC = () => (dispatch: Dispatch<ActionsTypes>) => {
         .catch((err) => {})
         .finally(() => {
             dispatch(setIsInitializedAC(true))
+            dispatch(setStatusAppAC('succeeded'))
         })
 }
 

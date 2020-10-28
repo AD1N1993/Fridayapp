@@ -9,6 +9,7 @@ import {NavLink, Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../app/store";
 import { Preloader } from "../../components/Preloader/Preloader";
 import s from "../../app/App.module.scss";
+import {RequestStatusType} from "../../app/app-reducer";
 
 
 type FormikErrorType = {
@@ -18,7 +19,7 @@ type FormikErrorType = {
 
 export const SignUp = () => {
     const isRegistered = useSelector<AppRootStateType, boolean>(state => state.signup.isRegistered)
-    const registrationLoad = useSelector<AppRootStateType, boolean>(state => state.signup.registrationLoad)
+    const appStatus = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
     const registrationError = useSelector<AppRootStateType, null | string>(state => state.signup.registrationError)
     const dispatch = useDispatch()
 
@@ -49,7 +50,7 @@ export const SignUp = () => {
     if (isRegistered) {
         return <Redirect to={'/login'}/>
     }
-    if (registrationLoad) {
+    if (appStatus === "loading") {
         return <Preloader/>
     }
     return (
