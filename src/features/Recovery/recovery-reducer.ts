@@ -2,6 +2,7 @@ import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "../../app/store";
 import {authAPI} from "../../api/api";
 import {setStatusAppAC} from "../../app/app-reducer";
+import {Dispatch} from "redux";
 
 const RECOVERY_SET_SHIPMENT = "RECOVERY_SET_SHIPMENT";
 const RECOVERY_SHOW_ERROR = "RECOVERY_SHOW_ERROR";
@@ -32,7 +33,7 @@ const showError = (error: string) => ({type: RECOVERY_SHOW_ERROR, error} as cons
 
 //Thunk creators
 export const recoveryRequestTC = (email: string): ThunkType => {
-    return async (dispatch) => {
+    return async (dispatch: Dispatch<ActionsTypes>) => {
         dispatch(setStatusAppAC('loading'))
         try {
             await authAPI.forgotPassword(email);
@@ -46,7 +47,7 @@ export const recoveryRequestTC = (email: string): ThunkType => {
 }
 
 export const resetPasswordTC = (newPassword: string, token: string): ThunkType => {
-    return async (dispatch) => {
+    return async (dispatch: Dispatch<ActionsTypes>) => {
         dispatch(setStatusAppAC('loading'))
         try {
             await authAPI.setNewPassword(newPassword, token);
