@@ -1,5 +1,6 @@
 import axios from "axios";
 import {LoginParamsType} from "../features/Login/auth-reducer";
+import {PackType} from "../features/Packs/Packs-reducer";
 
 const settings = {
     withCredentials: true
@@ -23,8 +24,8 @@ export const authAPI = {
                 "</div>"
         })
     },
-    setNewPassword(password:string,resetPasswordToken:string) {
-        return instance.post<{info:string}>("/auth/set-new-password",{password,resetPasswordToken})
+    setNewPassword(password: string, resetPasswordToken: string) {
+        return instance.post<{ info: string }>("/auth/set-new-password", {password, resetPasswordToken})
     },
     login(data: LoginParamsType) {
         return instance.post(`/auth/login`, data)
@@ -33,18 +34,19 @@ export const authAPI = {
         return instance.delete("/auth/me")
     },
     registered(data: RegisteredParamsType) {
-        return  instance.post<RegistrationResponseType>('/auth/register', data)
+        return instance.post<RegistrationResponseType>('/auth/register', data)
     },
     me() {
         return instance.post('auth/me')
     }
 }
 export const PacksAPI = {
+    getPacks(packName: string = '', min: string = '', max: string='', sortPacks: string='', page: string='', pageCount: string='', user_id: string='') {
+        return instance.get(`/cards/pack?packName=${packName}&min=${min}&max=${max}&sortPacks=${sortPacks}&page=${page}&pageCount=${pageCount}&user_id${user_id}`)
+    }
 
 }
-export const CardsAPI = {
-
-}
+export const CardsAPI = {}
 
 //nya-admin@nya.nya
 //1qazxcvBG
