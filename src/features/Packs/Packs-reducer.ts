@@ -144,9 +144,10 @@ export const createPackAC = (newPack: PackType) => ({type: 'CREATE-PACK', newPac
 
 
 //Thunk creators
-export const getPacksTC = (page: number, pageCount: number) => {
+export const getPacksTC = (currentPage: any, pageSize: any, packName?: string, min?: string, max?: string,
+                           update?: string) => {
     return (dispatch: Dispatch<ActionsTypes>) => {
-        PacksAPI.getPacks(page, pageCount)
+        PacksAPI.getPacks(currentPage, pageSize)
             .then((res) => {
                 dispatch(setPacksAC(res.data.cardPacks))
             })
@@ -167,6 +168,7 @@ export const createPackTC = (packName: string) => {
         PacksAPI.postPack(newPack)
             .then( (res) => {
                 dispatch(getPacksTC(initialState.currentPage, initialState.pageSize ))
+                debugger
             })
     }
 }
