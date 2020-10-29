@@ -1,6 +1,6 @@
 import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "../../app/store";
-import {RegisteredParamsType} from "../../api/api";
+import {RegistrationParamsType} from "../../api/api";
 
 
 const initialState = {
@@ -11,7 +11,7 @@ const initialState = {
     isFetching: false
 }
 
-export const CardsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
+export const cardsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
 
         default:
@@ -24,7 +24,7 @@ export const setIsRegisteredAC = (isRegistered: boolean) => ({type: 'SET-IS-REGI
 
 
 //Thunk creators
-export const registrationTC = (data: RegisteredParamsType) => {
+export const registrationTC = (data: RegistrationParamsType) => {
     return (dispatch: any) => {
 
     }

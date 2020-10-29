@@ -7,7 +7,8 @@ import {SetIsLoggedType, setIsLoggedAC} from "../features/Login/auth-reducer";
 const initialState: InitialStateType = {
     isInitialized: false,
     status: "idle",
-    error: null
+    error: null,
+    myUserID: "",
 }
 
 export const appReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
@@ -16,6 +17,8 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
             return {...state, isInitialized: action.isInitialized}
         case "SET_STATUS_APP":
             return {...state, status: action.status}
+        case "SET_MY_USER_ID":
+            return {...state, myUserID: action.id}
         default:
             return state
     }
@@ -25,6 +28,7 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
 export const setIsInitializedAC = (isInitialized: boolean) => ({type: 'APP_SET_INITIALIZED', isInitialized} as const)
 export const setStatusAppAC = (status: RequestStatusType) => ({type: 'SET_STATUS_APP', status} as const)
 export const setAppErrorAC = (error: string | null) => ({type: 'SET_APP_ERROR', error} as const)
+export const setMyUserIdAC = (id: string) => ({type: 'SET_MY_USER_ID', id} as const)
 
 //Thunk creators
 export const initializeAppTC = () => (dispatch: Dispatch<ActionsTypes>) => {
@@ -33,6 +37,7 @@ export const initializeAppTC = () => (dispatch: Dispatch<ActionsTypes>) => {
         .then((res) => {
             dispatch(setStatusAppAC('succeeded'))
             dispatch(setIsLoggedAC(true));
+            dispatch(setMyUserIdAC(res.data._id))
         })
         .catch((err) => {})
         .finally(() => {
@@ -46,6 +51,7 @@ type ActionsTypes =
     | ReturnType<typeof setIsInitializedAC>
     | ReturnType<typeof setStatusAppAC>
     | ReturnType<typeof setAppErrorAC>
+    | ReturnType<typeof setMyUserIdAC>
     | SetIsLoggedType
 
 export type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
@@ -53,7 +59,8 @@ export type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, Ac
 type InitialStateType = {
     isInitialized: boolean
     status: RequestStatusType
-    error: string | null
+    error: string | null,
+    myUserID: string
 }
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed';

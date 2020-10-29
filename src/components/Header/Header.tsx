@@ -26,6 +26,9 @@ export const Header = () => {
                         <NavLink className={s.navLink} to="/" activeClassName={""}>
                             <li className={s.linkItem}> Profile</li>
                         </NavLink>
+                        <NavLink className={s.navLink} to="/packs" activeClassName={""}>
+                            <li className={s.linkItem}> Packs</li>
+                        </NavLink>
 
                         {!isLogged
                             ? <NavLink className={s.navLink} to="login" activeClassName={""}>

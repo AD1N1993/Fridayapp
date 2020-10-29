@@ -11,6 +11,7 @@ import {initializeAppTC} from "./app-reducer";
 import {AppRootStateType} from "./store";
 import {Preloader} from "../components/Preloader/Preloader";
 import s from "./App.module.scss"
+import {Packs} from "../features/Packs/Packs";
 function App(){
     const dispatch = useDispatch()
     const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
@@ -29,6 +30,7 @@ function App(){
             <Header/>
             <Switch>
                 <Route exact path={["/Fridayapp", "/"]} render={() => <Profile/>}/>
+                <Route path={"/packs"} render={() => <Packs/>}/>
                 <Route path={"/login"} render={() => <Login/>}/>
                 <Route path={"/signup"} render={() => <SignUp/>}/>
                 <Route path={"/recovery"} render={() => <Recovery/>}/>

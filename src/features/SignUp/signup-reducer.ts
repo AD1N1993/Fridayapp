@@ -1,6 +1,6 @@
 import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "../../app/store";
-import {authAPI, RegisteredParamsType} from "../../api/api";
+import {authAPI, RegistrationParamsType} from "../../api/api";
 
 
 const initialState: InitialStateType = {
@@ -29,7 +29,7 @@ export const setRegistrationErrorAC = (error: null | string) => ({type: 'SET-REG
 
 
 //Thunk creators
-export const registrationTC = (data: RegisteredParamsType) => {
+export const registrationTC = (data: RegistrationParamsType) => {
     return  (dispatch: any) => {
         dispatch(setRegistrationLoadAC(true))
         authAPI.registered(data)
