@@ -36,6 +36,9 @@ export const Header = () => {
                         <NavLink className={s.navLink} to="signup" activeClassName={""}>
                             <li className={s.linkItem}> Signup</li>
                         </NavLink>
+                        <NavLink className={s.navLink} to="packs" activeClassName={""}>
+                            <li className={s.linkItem}>Packs</li>
+                        </NavLink>
                         {isLogged ? <Button value={"Log out"} action={logout}/> : null}
 
                     </ul>

@@ -11,6 +11,7 @@ import {initializeAppTC} from "./app-reducer";
 import {AppRootStateType} from "./store";
 import {Preloader} from "../components/Preloader/Preloader";
 import s from "./App.module.scss"
+import { Packs } from '../features/Packs/Packs';
 function App(){
     const dispatch = useDispatch()
     const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
@@ -33,6 +34,7 @@ function App(){
                 <Route path={"/signup"} render={() => <SignUp/>}/>
                 <Route path={"/recovery"} render={() => <Recovery/>}/>
                 <Route path={"/initiate/:token"} render={() => <Initiate/>}/>
+                <Route path={"/packs"} render={() => <Packs/>}/>
                 <Route path={"/404"} render={() => <h1>Error 404. Page not found.</h1>}/>
                 <Redirect from={"*"} to={"/404"}/>
             </Switch>

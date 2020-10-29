@@ -1,0 +1,57 @@
+.paginatorWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+
+}
+.pagesList{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 0;
+  width: 250px;
+}
+.pagesItems {
+  list-style: none;
+  cursor: pointer;
+  color: black;
+  width: 30px;
+  height: 30px;
+  text-decoration: none;
+  line-height: 30px;
+  &:hover{
+    background-color: #989898;
+    border-radius: 5px;
+  }
+}
+
+.selectedPage {
+  font-weight: 900;
+  color: #ffffff;
+  background-color: #74b807;
+  border-radius: 5px;
+}
+.lastPage{
+  list-style: none;
+  cursor: pointer;
+  &:hover{
+    border-radius: 5px;
+    width: 30px;
+    padding: -5px;
+  }
+
+}
+.btn{
+  background-color: #74b807;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  color: #ffffff;
+  outline: none;
+}
+.btn:disabled{
+  background-color: #727a72;
+}

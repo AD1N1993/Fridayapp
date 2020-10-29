@@ -1,5 +1,6 @@
 import axios from "axios";
 import {LoginParamsType} from "../features/Login/auth-reducer";
+import {PackType} from "../features/Packs/Packs-reducer";
 
 const settings = {
     withCredentials: true
@@ -13,18 +14,18 @@ const instance = axios.create({
 
 export const authAPI = {
     forgotPassword(email: string) {
-        return instance.post("/auth/forgot", {
+        return instance.post<ForgotPasswordResponseType>("/auth/forgot", {
             email,
             "from": "test-front-admin <ai73a@yandex.by>",
             "message": "<div style= 'background-color: #b8b8b8; padding: 15px'> " +
-                "password recovery link: <a href='http://localhost:3000/Fridayapp#/initiate/$token$'> " +
+                "password recovery link: <a href='https://ad1n1993.github.io/Fridayapp/#/initiate/$token$'> " +
                 "Click the link to restore access to your account " +
                 "</a>" +
                 "</div>"
         })
     },
-    setNewPassword(password:string,resetPasswordToken:string) {
-        return instance.post("/auth/set-new-password",{password,resetPasswordToken})
+    setNewPassword(password: string, resetPasswordToken: string) {
+        return instance.post<{ info: string }>("/auth/set-new-password", {password, resetPasswordToken})
     },
     login(data: LoginParamsType) {
         return instance.post(`/auth/login`, data)
@@ -33,23 +34,30 @@ export const authAPI = {
         return instance.delete("/auth/me")
     },
     registered(data: RegisteredParamsType) {
-        return  instance.post<RegistrationResponseType>('/auth/register', data)
+        return instance.post<RegistrationResponseType>('/auth/register', data)
     },
     me() {
         return instance.post('auth/me')
     }
 }
 export const PacksAPI = {
+    getPacks(packName: string = '', min: string = '', max: string='', sortPacks: string='', page: string='', pageCount: string='', user_id: string='') {
+        return instance.get(`/cards/pack?packName=${packName}&min=${min}&max=${max}&sortPacks=${sortPacks}&page=${page}&pageCount=${pageCount}&user_id${user_id}`)
+    }
 
 }
-export const CardsAPI = {
-
-}
+export const CardsAPI = {}
 
 //types
 export type RegisteredParamsType = {
     email: string,
     password: string
+}
+export type  ForgotPasswordResponseType = {
+    "info": string,
+    "success": boolean,
+    "answer": boolean,
+    "html": boolean
 }
 export type RegistrationResponseType = {
     addedUser: {
