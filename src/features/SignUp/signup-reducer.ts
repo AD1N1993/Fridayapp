@@ -1,9 +1,8 @@
 import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "../../app/store";
-import {authAPI, RegisteredParamsType} from "../../api/api";
+import {authAPI, RegistrationParamsType} from "../../api/api";
 import {setStatusAppAC} from "../../app/app-reducer";
 import {Dispatch} from "redux";
-
 
 const initialState: InitialStateType = {
     isRegistered: false,
@@ -27,7 +26,7 @@ export const setRegistrationErrorAC = (error: null | string) => ({type: 'SET-REG
 
 
 //Thunk creators
-export const registrationTC = (data: RegisteredParamsType) => {
+export const registrationTC = (data: RegistrationParamsType) => {
     return  (dispatch: Dispatch<ActionsTypes>) => {
         dispatch(setStatusAppAC('loading'))
         authAPI.registered(data)

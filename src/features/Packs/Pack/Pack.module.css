@@ -1,0 +1,12 @@
+.packBlock {
+    border: 1px solid;
+    border-radius: 10px;
+    min-width: 200px;
+    height: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #a4e271;
+    margin: 10px;
+    box-shadow:1px 1px 7px 3px rgba(0,0,0,0.11);
+}

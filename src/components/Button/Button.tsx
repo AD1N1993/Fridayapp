@@ -2,11 +2,11 @@ import React from "react";
 import s from "./Button.module.scss"
 
 type ButtonTypeProps = {
-    value:string
-    action: ()=> void
+    value: string
+    action: () => void
     mode?: "red"|null
-    type?:"button" | "submit" | "reset" | undefined
-    disabled?:boolean
+    type?: "button" | "submit" | "reset" | undefined
+    disabled?: boolean
 }
 
 export const Button = (props:ButtonTypeProps) =>{

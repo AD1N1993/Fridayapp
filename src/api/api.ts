@@ -1,11 +1,9 @@
 import axios from "axios";
 import {LoginParamsType} from "../features/Login/auth-reducer";
-import {PackType} from "../features/Packs/Packs-reducer";
 
 const settings = {
     withCredentials: true
 }
-
 
 const instance = axios.create({
     baseURL: "https://neko-back.herokuapp.com/2.0",
@@ -33,23 +31,47 @@ export const authAPI = {
     logout() {
         return instance.delete("/auth/me")
     },
-    registered(data: RegisteredParamsType) {
-        return instance.post<RegistrationResponseType>('/auth/register', data)
+    registered(data: RegistrationParamsType) {
+        return  instance.post<RegistrationResponseType>('/auth/register', data)
     },
     me() {
         return instance.post('auth/me')
     }
 }
 export const PacksAPI = {
-    getPacks(packName: string = '', min: string = '', max: string='', sortPacks: string='', page: string='', pageCount: string='', user_id: string='') {
-        return instance.get(`/cards/pack?packName=${packName}&min=${min}&max=${max}&sortPacks=${sortPacks}&page=${page}&pageCount=${pageCount}&user_id${user_id}`)
+    getPacks(page: number = 1, pageCount: number = 4, min: number = 3, max: number = 9, sortPacks: string = '0update', user_id?: string) {
+        return instance.get<GetPacksResponseType>(
+            `/cards/pack?page=${page}&pageCount=${pageCount}&sotrPacks=${sortPacks}`
+        )
+    },
+    postPack(cardsPack: PostPackParamsType) {
+        return instance.post('/cards/pack', {cardsPack: cardsPack})
+    },
+    deletePack(packID: string) {
+        return instance.delete(`/cards/pack?id=${packID}`)
+    },
+    putPack(cardsPack: PutPackParamsType) {
+        return instance.put('/cards/pack', cardsPack)
     }
-
 }
-export const CardsAPI = {}
+export const CardsAPI = {
+    getCards(cardsPack_id: string, min: number = 1, max: number = 4, page: number = 1, pageCount: number = 7) {
+        return instance.get<GetCardsResponseType>('/cards/card?' + cardsPack_id)
+    },
+    postCard(card: PostCardParamsType) {
+        return instance.post('cards/card', card)
+    },
+    deleteCard(id: string) {
+        return instance.delete('cards/card?' + id)
+    },
+    putCard(card: PutCardParamsType) {
+        return instance.put('cards/card', card)
+    }
+}
+
 
 //types
-export type RegisteredParamsType = {
+export type RegistrationParamsType = {
     email: string,
     password: string
 }
@@ -73,3 +95,90 @@ export type RegistrationResponseType = {
         _id: string
     }
 }
+export type GetPacksResponseType = {
+    cardPacks:Array<PackType>
+    page: number
+    pageCount: number
+    cardPacksTotalCount: number
+    minCardsCount: number
+    maxCardsCount: number
+    token: string
+    tokenDeathTime: number
+}
+export type GetCardsResponseType = {
+    cards: Array<CardType>
+    page: number
+    pageCount: number
+    cardsTotalCount: number
+    minGrade: number
+    maxGrade: number
+    token: string
+    tokenDeathTime: number
+}
+export type PackType = {
+    _id: string
+    user_id: string
+    user_name: string
+    private: boolean
+    name: string
+    path: string
+    grade: number
+    shots: number
+    cardsCount: number
+    type: string
+    rating: number
+    created: string
+    updated: string
+    more_id: string
+    __v: number
+}
+export type CardType = {
+    _id: string
+    cardsPack_id: string
+    user_id: string
+    answer: string
+    question: string
+    grade: number
+    shots: number
+    questionImg: string
+    comments: string
+    type: string
+    rating: number
+    more_id: string
+    created: string
+    updated: string
+    __v: number
+}
+export type PostPackParamsType = {
+    name: string
+    path?: string
+    grade?: number
+    shots?: number
+    rating?: number
+    deckCover?: string
+    private?: boolean
+    type?: string
+}
+export type PutPackParamsType = {
+    _id: string
+    name?: string
+}
+export type PostCardParamsType = {
+    cardsPack_id: string
+    question?: string
+    answer?: string
+    grade?: 0 | 1 | 2 | 3 | 4 | 5
+    shots?: number
+    rating?: number
+    answerImg?: string
+    questionImg?: string
+    questionVideo?: string
+    answerVideo?: string
+    type?: string
+}
+export type PutCardParamsType = {
+    _id: string
+    question?: string
+    comments?: string
+}
+
