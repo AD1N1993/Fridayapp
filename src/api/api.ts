@@ -39,8 +39,9 @@ export const authAPI = {
     }
 }
 export const PacksAPI = {
-    getPacks(packName:string="",min: number = 0, max: number = 20, sortPacks: string = '0update',page: number = 1, pageCount: number = 5,  user_id?: string,) {
+    getPacks(packName:string="",min: number = 0, max: number = 20, sortPacks: string = '0update',page: number = 1, pageCount: number = 5,  user_id?: string,) {debugger
         return instance.get<GetPacksResponseType>(
+
             `/cards/pack?packName=${packName}&min=${min}&max=${max}&sortPacks=${sortPacks}updated&page=${page}&pageCount=${pageCount}`
         )
     },

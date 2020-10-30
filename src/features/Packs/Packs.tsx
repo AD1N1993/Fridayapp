@@ -28,7 +28,7 @@ export const Packs = () => {
 
     useEffect(() => {
         if (!isLoggedIn) return
-        dispatch(getPacksTC(packName + "", min, max, `${update}updated`, currentPage,
+        dispatch(getPacksTC(packName + "", min, max, `${update}`, currentPage,
             +pageSize));
     }, [packName, currentPage, dispatch, pageSize,min,max, update])
     if (!isLoggedIn) {
