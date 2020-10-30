@@ -49,11 +49,12 @@ export const initializeAppTC = () => (dispatch: Dispatch<ActionsTypes>) => {
 
 //types
 export type SetStatusApp = ReturnType<typeof setStatusAppAC >
+export type SetUserId = ReturnType<typeof setMyUserIdAC >
 type ActionsTypes =
     | ReturnType<typeof setIsInitializedAC>
     | SetStatusApp
     | ReturnType<typeof setAppErrorAC>
-    | ReturnType<typeof setMyUserIdAC>
+    | SetUserId
     | SetIsLoggedType
 
 export type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>

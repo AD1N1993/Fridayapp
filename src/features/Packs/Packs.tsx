@@ -6,7 +6,7 @@ import {AppRootStateType} from "../../app/store";
 import s from "./Packs.module.scss"
 import {getPacksTC, setCurrentPageAC} from "./Packs-reducer";
 import {FindForm} from "../../components/FindForm/FindForm";
-import { Sort } from "../../components/Sort/Sort";
+import {Sort} from "../../components/Sort/Sort";
 import {Paginator} from "../../components/Paginator/Paginator";
 import {Select} from "../../components/Select/Select";
 import {Redirect} from "react-router-dom";
@@ -30,7 +30,7 @@ export const Packs = () => {
         if (!isLoggedIn) return
         dispatch(getPacksTC(packName + "", min, max, `${update}`, currentPage,
             +pageSize));
-    }, [packName, currentPage, dispatch, pageSize,min,max, update])
+    }, [packName, currentPage, dispatch, pageSize, min, max, update])
     if (!isLoggedIn) {
 
         return <Redirect to={'/login'}/>
@@ -38,9 +38,7 @@ export const Packs = () => {
     return (
         <>
             <h1>Packs Page</h1>
-
             <FindForm/>
-
             <Sort/>
             <div>
                 <h2>PACKS</h2>

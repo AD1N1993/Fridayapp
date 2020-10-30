@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../../api/api";
-import {setStatusAppAC} from "../../app/app-reducer";
+import {setMyUserIdAC, setStatusAppAC, SetUserId} from "../../app/app-reducer";
 
 
 const initialState = {
@@ -34,6 +34,7 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
         .then((res) => {
             if (res.statusText === "OK") {
                 dispatch(setIsLoggedAC(true))
+                dispatch(setMyUserIdAC(res.data._id))
             }
         })
         .catch((e) => {
@@ -54,6 +55,7 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsTypes>) => {
         .then((res) => {
             if (res.statusText === "OK") {
                 dispatch(setIsLoggedAC(false))
+                dispatch(setMyUserIdAC(res.data._id))
             }
         })
         .finally(() => {
@@ -68,7 +70,7 @@ export type SetIsLoggedType = ReturnType<typeof setIsLoggedAC>
 type ActionsTypes =
     SetIsLoggedType |
     ReturnType<typeof setLoginErrorAC> |
-    ReturnType<typeof setStatusAppAC>
+    ReturnType<typeof setStatusAppAC> | SetUserId
 
 export type LoginParamsType = {
     email: string
