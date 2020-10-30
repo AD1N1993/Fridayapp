@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f7ac1cf78b6e5ac90aa4ffaa802b6ebf",
+    "revision": "ca73fc2c3690a74bb4cedd156bbd1384",
     "url": "/Fridayapp/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Fridayapp/static/css/2.ed590494.chunk.css"
   },
   {
-    "revision": "aa966141721a3362f88e",
+    "revision": "5a1096d2c57c2e3d764b",
     "url": "/Fridayapp/static/css/main.f4f2e6e0.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Fridayapp/static/js/2.400fcac0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "aa966141721a3362f88e",
-    "url": "/Fridayapp/static/js/main.351369df.chunk.js"
+    "revision": "5a1096d2c57c2e3d764b",
+    "url": "/Fridayapp/static/js/main.d5f02fdf.chunk.js"
   },
   {
     "revision": "dbf2bed243d3509a5b46",
