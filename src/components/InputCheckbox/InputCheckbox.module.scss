@@ -4,8 +4,9 @@
 
 .checkbox {
   position: relative;
-  color: #181717;
-  font-size: 20px;
+  color: #e2e2e2;
+  font-size: 16px;
+  margin-left: -22px;
   &::before {
     position: absolute;
     top: 50%;
@@ -18,7 +19,7 @@
 
   }
   &:hover{
-    border-bottom: 1px solid #008000;
+    color: orange;
     &::before {
       background-color: #dbdbdb;
     }

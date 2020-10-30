@@ -23,7 +23,7 @@ export const Sort = () => {
             <div className={s.range}>
                 Number of cards: {value[0]} - {value[1]}
                 <Range min={0} max={20} step={1} dots={false} defaultValue={value} onChange={onRangeValue}
-                       pushable={true}/>
+                       pushable={true} />
                        <span onClick={()=>{setUpdatePacks(SortType.new)}}>show new packs first</span> --- <span onClick={()=>{setUpdatePacks(SortType.old)}}>show old packs first</span>
             </div>
         </>

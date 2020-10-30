@@ -9,7 +9,7 @@ import {Button} from "../../components/Button/Button";
 import styles from "./Login.module.scss"
 import {Preloader} from "../../components/Preloader/Preloader";
 import {InputCheckBox} from "../../components/InputCheckbox/InputCheckbox";
-import s from "../../app/App.module.scss"
+import s from "../../common/styles/common.module.scss"
 import {RequestStatusType} from "../../app/app-reducer";
 
 export const Login = () => {
@@ -58,30 +58,35 @@ export const Login = () => {
 
     return (
         <div className={s.formWrapper}>
-            <h1>Login Page</h1>
-            <form onSubmit={formik.handleSubmit} >
+            <h2 className={styles.loginTitle}>Welcome</h2>
+            <p>Learning is easy - let`s start!</p>
+            <form onSubmit={formik.handleSubmit}>
                 <InputText name={"email"} value={formik.values.email}
                            onChange={formik.handleChange}
                            placeholder={"Email"}
                            actionEnter={() => {
                            }} type={"text"}/>
-                {formik.errors.email ? <div style={{color: "red"}}>{formik.errors.email}</div> : null}
+                {formik.errors.email ? <div className={styles.errorLogin}>{formik.errors.email}</div> : null}
                 <InputText name={"password"} value={formik.values.password}
                            onChange={formik.handleChange}
                            placeholder={"Password"}
                            actionEnter={() => {
                            }} type={"password"}/>
-                {formik.errors.password ? <div style={{color: "red"}}>{formik.errors.password}</div> : null}
+                {formik.errors.password ? <div className={styles.errorLogin}>{formik.errors.password}</div> : null}
                 {errorLogin && <div className={styles.errorLogin}>{errorLogin}</div>}
                 {appStatus === 'loading' && <Preloader/>}
                 <InputCheckBox checked={formik.values.rememberMe} changeStatus={formik.handleChange}
-                               value={"remember me"} name={"rememberMe"}/><br/>
-                <Button value={"send"} action={formik.handleSubmit} type={"submit"}/>
+                               value={"remember me"} name={"rememberMe"}/>
+                <NavLink className={styles.forgot} to="recovery" activeClassName={""}>
+                    <span className={s.forgot}> Forgot password?</span>
+                </NavLink><br/>
+                <div className={styles.btn}>
+                    <Button value={"send"} action={formik.handleSubmit} type={"submit"}/>
+                </div>
+
 
             </form>
-            <NavLink className={""} to="recovery" activeClassName={""}>
-                <span className={""}> Forgot password?</span>
-            </NavLink>
+
         </div>
     );
 }

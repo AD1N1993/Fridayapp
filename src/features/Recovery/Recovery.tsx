@@ -8,7 +8,7 @@ import {Redirect} from 'react-router-dom';
 import {AppRootStateType} from "../../app/store";
 import {Preloader} from "../../components/Preloader/Preloader";
 import {useRedirect} from "../../utils/customHooks";
-import s from "../../app/App.module.scss";
+import s from "../../common/styles/common.module.scss";
 import {RequestStatusType} from "../../app/app-reducer";
 
 

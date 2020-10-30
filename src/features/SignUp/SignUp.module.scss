@@ -1,10 +1,18 @@
-
+.registerTitle{
+  margin: 10px;
+}
 .error {
-  color: red;
+  color: orange;
 }
 .linkToLogin {
   margin-top: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  &:hover{
+    color: orange;
+  }
 }
 .registrationError {
-  color: red;
+  color: orange;
 }
+

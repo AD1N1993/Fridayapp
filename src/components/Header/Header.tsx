@@ -22,30 +22,30 @@ export const Header = () => {
         <>
             {appStatus === 'loading' && <Preloader/>}
             <header className={s.header}>
+                <NavLink className={s.logo}  to="/" activeClassName={""}>
+                <div className={s.logo}>SmartCards</div>
+                </NavLink>
                 <nav>
                     <ul className={s.navList}>
-                        <NavLink className={s.navLink} to="/" activeClassName={""}>
+                        <NavLink className={s.navLink} to="/profile" activeClassName={s.navLinkActive}>
                             <li className={s.linkItem}> Profile</li>
                         </NavLink>
-                        <NavLink className={s.navLink} to="/packs" activeClassName={""}>
-                            <li className={s.linkItem}> Packs</li>
-                        </NavLink>
-
-                        {!isLogged
-                            ? <NavLink className={s.navLink} to="login" activeClassName={""}>
-                                <li className={s.linkItem}> Login</li>
-                            </NavLink>
-                            : null}
-                        <NavLink className={s.navLink} to="signup" activeClassName={""}>
+                        <NavLink className={s.navLink} to="signUp" activeClassName={s.navLinkActive}>
                             <li className={s.linkItem}> Signup</li>
                         </NavLink>
-                        <NavLink className={s.navLink} to="packs" activeClassName={""}>
+                        <NavLink className={s.navLink} to="packs" activeClassName={s.navLinkActive}>
                             <li className={s.linkItem}>Packs</li>
                         </NavLink>
-                        {isLogged ? <Button value={"Log out"} action={logout}/> : null}
-
                     </ul>
                 </nav>
+                <div>
+                    {isLogged ?  <span className={s.login} onClick={logout}> Logout</span> : null}
+                    {!isLogged
+                        ? <NavLink className={s.login} to="login" activeClassName={""}>
+                            <span> LogIn</span>
+                        </NavLink>
+                        : null}
+                </div>
             </header>
         </>);
 }

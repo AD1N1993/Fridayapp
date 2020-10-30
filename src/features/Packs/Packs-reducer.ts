@@ -1,8 +1,8 @@
-import {PacksAPI, PackType, PostPackParamsType} from "../../api/api";
 import {Dispatch} from "redux";
 import {AppRootStateType} from "../../app/store";
 import {ThunkAction} from "redux-thunk";
 import {SetStatusApp, setStatusAppAC} from "../../app/app-reducer";
+import {PacksAPI, PackType, PostPackParamsType} from "../../api/api";
 
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_PACKS_TOTAL_COUNT = "SET_PACKS_TOTAL_COUNT";

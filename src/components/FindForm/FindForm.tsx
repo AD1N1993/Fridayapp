@@ -20,9 +20,7 @@ export const FindForm = () => {
         },
         validate: (values) => {
             const errors: FormikErrorType = {};
-            if (values.stringSearch.length < 2) {
-                errors.stringSearch = 'Too Short!';
-            } else if (values.stringSearch.length > 10) {
+            if (values.stringSearch.length > 10) {
                 errors.stringSearch = 'Max 10 chars';
             }
             return errors;
