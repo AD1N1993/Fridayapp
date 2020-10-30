@@ -2,6 +2,7 @@ import {PacksAPI, PackType, PostPackParamsType} from "../../api/api";
 import {Dispatch} from "redux";
 import {AppRootStateType} from "../../app/store";
 import {ThunkAction} from "redux-thunk";
+import {SetStatusApp, setStatusAppAC} from "../../app/app-reducer";
 
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_PACKS_TOTAL_COUNT = "SET_PACKS_TOTAL_COUNT";
@@ -17,75 +18,8 @@ export enum SortType {
 
 
 const initialState: InitialStateType = {
-    packs: [ {
-        "_id": "5f9931cda8ecd80004251062",
-        "user_id": "5f8db5f8af26d91404fa17ef",
-        "user_name": "osbelkz@gmail.com",
-        "private": false,
-        "name": "English",
-        "path": "/def",
-        "grade": 0,
-        "shots": 0,
-        "cardsCount": 0,
-        "type": "pack",
-        "rating": 0,
-        "created": "2020-10-28T08:54:37.697Z",
-        "updated": "2020-10-28T08:54:37.697Z",
-        "more_id": "5f8db5f8af26d91404fa17ef",
-        "__v": 0
-    },
-        {
-            "_id": "5f9886bff287e40004436f77",
-            "user_id": "5eecf82a3ed8f700042f1186",
-            "user_name": "nya",
-            "private": false,
-            "name": "REACT",
-            "path": "/def",
-            "grade": 0,
-            "shots": 0,
-            "cardsCount": 0,
-            "type": "pack",
-            "rating": 0,
-            "created": "2020-10-27T20:44:47.261Z",
-            "updated": "2020-10-27T20:44:47.261Z",
-            "more_id": "5eecf82a3ed8f700042f1186",
-            "__v": 0
-        },
-        {
-            "_id": "5f9879dbf287e40004436f75",
-            "user_id": "5eecf82a3ed8f700042f1186",
-            "user_name": "nya",
-            "private": false,
-            "name": "JavaScript",
-            "path": "/def",
-            "grade": 0,
-            "shots": 0,
-            "cardsCount": 1,
-            "type": "pack",
-            "rating": 0,
-            "created": "2020-10-27T19:49:47.361Z",
-            "updated": "2020-10-27T19:50:04.938Z",
-            "more_id": "5eecf82a3ed8f700042f1186",
-            "__v": 0
-        },
-        {
-            "_id": "5f9869f70c8c97231cd9b9a5",
-            "user_id": "5f9047988fe3a00004400991",
-            "user_name": "alekseidarafeichyk@gmail.com",
-            "private": false,
-            "name": "TypeScript",
-            "path": "/def",
-            "grade": 0,
-            "shots": 0,
-            "cardsCount": 0,
-            "type": "pack",
-            "rating": 0,
-            "created": "2020-10-27T18:41:59.093Z",
-            "updated": "2020-10-27T18:41:59.093Z",
-            "more_id": "5f9047988fe3a00004400991",
-            "__v": 0
-        }],
-    pageSize: "12",
+    packs: [ ],
+    pageSize: "5",
     totalPacksCount: 0,
     currentPage: 1,
     isFetching: false,
@@ -142,33 +76,36 @@ export const setPacksAC = (packs: Array<PackType>) => ({type: 'SET-PACKS', packs
 export const removePackAC = (packID: string) => ({type: 'REMOVE-PACK', packID} as const)
 export const createPackAC = (newPack: PackType) => ({type: 'CREATE-PACK', newPack} as const)
 
-
 //Thunk creators
-export const getPacksTC = (currentPage: any, pageSize: any, packName?: string, min?: string, max?: string,
-                           update?: string) => {
+export const getPacksTC = (packName?:string,min?: number, max?: number, sortPacks?: string,page?: number, pageCount?: number,  user_id?: string,) => {
     return (dispatch: Dispatch<ActionsTypes>) => {
-        PacksAPI.getPacks(currentPage, pageSize)
+        dispatch(setStatusAppAC("loading"))
+        PacksAPI.getPacks(packName, min,max,sortPacks,page,pageCount,)
             .then((res) => {
                 dispatch(setPacksAC(res.data.cardPacks))
+                dispatch(setCardPacksTotalCountAC(res.data.cardPacksTotalCount))
+                dispatch(setStatusAppAC("succeeded"))
             })
     }
 }
 export const removePackTC = (packID: string) => {
     return (dispatch: Dispatch<any>) => {
+        dispatch(setStatusAppAC("loading"))
         PacksAPI.deletePack(packID)
             .then((res) => {
-                dispatch(getPacksTC(initialState.currentPage, initialState.pageSize ))
+                dispatch(getPacksTC())
+                dispatch(setStatusAppAC("succeeded"))
             })
     }
 }
 export const createPackTC = (packName: string) => {
-    debugger
     const newPack: PostPackParamsType = {name: packName}
     return (dispatch: Dispatch<any>)  => {
+        dispatch(setStatusAppAC("loading"))
         PacksAPI.postPack(newPack)
             .then( (res) => {
-                dispatch(getPacksTC(initialState.currentPage, initialState.pageSize ))
-                debugger
+                dispatch(getPacksTC())
+                dispatch(setStatusAppAC("succeeded"))
             })
     }
 }
@@ -184,6 +121,7 @@ type ActionsTypes =
     | ReturnType<typeof setPageSizeAC>
     | ReturnType<typeof setMinMaxValueAC>
     | ReturnType<typeof setUpdatePacksAC>
+    | SetStatusApp
 
 type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
 

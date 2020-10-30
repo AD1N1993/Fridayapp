@@ -1,13 +1,13 @@
 import React from "react";
-import styles from "./Table.module.css"
+import styles from "./Table.module.scss"
 import {PackType} from "../../api/api";
 import {Pack} from "../../features/Packs/Pack/Pack";
 import {useDispatch, useSelector} from "react-redux";
-import {createPackTC, removePackTC} from "../../features/Packs/Packs-reducer";
 import {InputText} from "../InputText/InputText";
 import {Button} from "../Button/Button";
 import {useFormik} from "formik";
 import {AppRootStateType} from "../../app/store";
+import {createPackTC, removePackTC} from "../../features/Packs/Packs-reducer";
 
 type TablePropsType = {
     values: Array<PackType>
@@ -25,8 +25,8 @@ export const TablePacks = (props: TablePropsType) => {
             packName: ''
         },
         onSubmit: values => {
-            debugger
-            dispatch(createPackTC(values.packName))
+            dispatch(createPackTC(values.packName));
+            formik.resetForm();
         },
         validate: (values) => {
             const errors: FormikErrorType = {};
@@ -49,7 +49,7 @@ export const TablePacks = (props: TablePropsType) => {
         <div className={styles.tablePacksBlock}>
             <div className={styles.tablePackContainer}>
                 <div className={styles.packs}>
-                    {props.values.map(p => <Pack myUserID={myUserID} pack={p} key={p._id}  removePack={removePack}/>)}
+                    {props.values.map(p => <Pack myUserID={myUserID} pack={p} key={p._id} removePack={removePack}/>)}
                 </div>
             </div>
             <div className={styles.addPackBlock}>

@@ -1,15 +1,14 @@
 import React, {useEffect} from "react";
-import styles from "./Packs.module.css"
 import {TablePacks} from "../../components/Table/Table";
 import {PackType} from "../../api/api";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../app/store";
-import {FindForm} from "../../components/FindForm/FindForm";
+import s from "./Packs.module.scss"
 import {getPacksTC, setCurrentPageAC} from "./Packs-reducer";
+import {FindForm} from "../../components/FindForm/FindForm";
+import { Sort } from "../../components/Sort/Sort";
 import {Paginator} from "../../components/Paginator/Paginator";
 import {Select} from "../../components/Select/Select";
-import s from "./Packs.module.scss"
-import {Sort} from "../../components/Sort/Sort";
 
 export const Packs = () => {
     const packName = useSelector<AppRootStateType, string>(state => state.packs.findPackName)
@@ -27,8 +26,8 @@ export const Packs = () => {
 
     useEffect(() => {
         //
-        dispatch(getPacksTC(currentPage + "", pageSize + "", packName + "", min+"", max+"",
-            `${update}updated`));
+        dispatch(getPacksTC(packName + "", min, max, `${update}updated`, currentPage,
+            +pageSize));
     }, [packName, currentPage, dispatch, pageSize,min,max, update])
 
 

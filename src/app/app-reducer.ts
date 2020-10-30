@@ -48,9 +48,10 @@ export const initializeAppTC = () => (dispatch: Dispatch<ActionsTypes>) => {
 
 
 //types
+export type SetStatusApp = ReturnType<typeof setStatusAppAC >
 type ActionsTypes =
     | ReturnType<typeof setIsInitializedAC>
-    | ReturnType<typeof setStatusAppAC>
+    | SetStatusApp
     | ReturnType<typeof setAppErrorAC>
     | ReturnType<typeof setMyUserIdAC>
     | SetIsLoggedType
