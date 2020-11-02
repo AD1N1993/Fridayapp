@@ -30,6 +30,9 @@ export const Header = () => {
                         <NavLink className={s.navLink} to="/packs" activeClassName={""}>
                             <li className={s.linkItem}> Packs</li>
                         </NavLink>
+                        <NavLink className={s.navLink} to="cards" activeClassName={""}>
+                            <li className={s.linkItem}>Cards</li>
+                        </NavLink>
 
                         {!isLogged
                             ? <NavLink className={s.navLink} to="login" activeClassName={""}>
@@ -38,9 +41,6 @@ export const Header = () => {
                             : null}
                         <NavLink className={s.navLink} to="signup" activeClassName={""}>
                             <li className={s.linkItem}> Signup</li>
-                        </NavLink>
-                        <NavLink className={s.navLink} to="packs" activeClassName={""}>
-                            <li className={s.linkItem}>Packs</li>
                         </NavLink>
                         {isLogged ? <Button value={"Log out"} action={logout}/> : null}
 

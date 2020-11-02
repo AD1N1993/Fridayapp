@@ -23,10 +23,9 @@ export const Select = () => {
                     onChange={formik.handleChange}
                     style={{display: 'block'}}
                 >
-                    <option value={"5"} label="5"/>
-                    <option value={"10"} label="10"/>
-                    <option value={"15"} label="15"/>
-                    <option value={"20"} label="20"/>
+                    <option value={"6"} label="6"/>
+                    <option value={"12"} label="12"/>
+                    <option value={"24"} label="24"/>
                 </select>
             </form>
         </form>
