@@ -2,20 +2,21 @@
 
 }
 .tablePackContainer {
-    border: 1px solid;
+    //border: 1px solid;
     height: 100%;
-    width: 80%;
+    width: 75%;
+    //width: 73%;
     margin: 0 auto;
 }
 .packs {
     margin: 30px 0 30px 0;
     width: 100%;
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
     align-items: flex-start;
-    align-content: flex-start;
+    align-content: center;
 }
 .addPackBlock {
     margin-bottom: 50px;

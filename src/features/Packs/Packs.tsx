@@ -14,9 +14,7 @@ export const Packs = () => {
     const {findPackName,packs,min,max,update,totalPacksCount,currentPage,pageSize} = useSelector<AppRootStateType, InitialPackStateType>(state => state.packs)
     const dispatch = useDispatch();
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
-    const onChangeCurrentPage = (currentPage: number) => {
-        dispatch(setCurrentPageAC(currentPage))
-    }
+    const onChangeCurrentPage = (currentPage: number) => {dispatch(setCurrentPageAC(currentPage))}
 
     useEffect(() => {
         if (!isLoggedIn) return
@@ -45,8 +43,7 @@ export const Packs = () => {
                 <Paginator totalItemsCount={totalPacksCount}
                            pageSize={pageSize} currentPage={currentPage}
                            portionSize={7}
-                           onChangePage={onChangeCurrentPage}
-                />
+                           onChangePage={onChangeCurrentPage}/>
                 Size:<Select/>
             </div>
 

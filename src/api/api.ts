@@ -2,9 +2,10 @@ import axios from "axios";
 import {LoginParamsType} from "../features/Login/auth-reducer";
 
 const settings = {
-    withCredentials: true,
-
+    withCredentials: true
 }
+
+
 let localBack = "http://localhost:7542/2.0"
 let serverBack = "https://neko-back.herokuapp.com/2.0"
 const instance = axios.create({
@@ -37,7 +38,7 @@ export const authAPI = {
         return  instance.post<RegistrationResponseType>('/auth/register', data)
     },
     me() {
-        return instance.post('/auth/me')
+        return instance.post('auth/me')
     }
 }
 export const PacksAPI = {
@@ -57,8 +58,9 @@ export const PacksAPI = {
     }
 }
 export const CardsAPI = {
-    getCards(cardsPack_id: string, min: number = 1, max: number = 4, page: number = 1, pageCount: number = 7) {
-        return instance.get<GetCardsResponseType>('/cards/card?' + cardsPack_id)
+    getCards(cardsPack_id: string, page: number = 1, pageCount: number = 6, min: number = 1, max: number = 4 ) {
+        debugger
+        return instance.get<GetCardsResponseType>(`/cards/card?cardsPack_id=${cardsPack_id}`)
     },
     postCard(card: PostCardParamsType) {
         return instance.post('cards/card', card)

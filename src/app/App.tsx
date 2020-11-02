@@ -13,6 +13,7 @@ import {Preloader} from "../components/Preloader/Preloader";
 import s from "./App.module.scss"
 import {Packs} from "../features/Packs/Packs";
 import {Main} from "../features/Main/Main";
+import {Cards} from "../features/Cards/Cards";
 function App(){
     const dispatch = useDispatch()
     const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
@@ -30,9 +31,10 @@ function App(){
         <div className={s.App}>
             <Header/>
             <Switch>
-                <Route exact path={["/Fridayapp", "/"]} render={() => <Main/>}/>
+                <Route exact path={["/Fridayapp", "/"]} render={() => <Profile/>}/>
                 <Route path={"/packs"} render={() => <Packs/>}/>
                 <Route path={"/profile"} render={() => <Profile/>}/>
+                <Route path={"/cards"} render={() => <Cards/>}/>
                 <Route path={"/login"} render={() => <Login/>}/>
                 <Route path={"/signup"} render={() => <SignUp/>}/>
                 <Route path={"/recovery"} render={() => <Recovery/>}/>

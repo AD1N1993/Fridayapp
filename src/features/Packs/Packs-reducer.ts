@@ -15,11 +15,9 @@ export enum SortType {
     Z = 0,
     A = 1
 }
-
-
-const initialState: InitialPackStateType = {
-    packs: [ ],
-    pageSize: "5",
+const initialState: InitialStateType = {
+    packs: [],
+    pageSize: "6",
     totalPacksCount: 0,
     currentPage: 1,
     isFetching: false,
@@ -29,7 +27,8 @@ const initialState: InitialPackStateType = {
     update: "0update"
 }
 
-export const packsReducer = (state: InitialPackStateType = initialState, action: ActionsTypes): InitialPackStateType => {
+
+export const packsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case SET_CURRENT_PAGE:
             return {
@@ -121,10 +120,13 @@ type ActionsTypes =
     | ReturnType<typeof setMinMaxValueAC>
     | ReturnType<typeof setUpdatePacksAC>
     | SetStatusApp
+    | SetCardPacksTotalCountActionType
+
+export type SetCardPacksTotalCountActionType =  ReturnType<typeof setCardPacksTotalCountAC>
 
 type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
 
-export type InitialPackStateType = {
+export type InitialStateType = {
     packs: Array<PackType>
     pageSize: any
     totalPacksCount: number
