@@ -12,12 +12,12 @@ const SET_MIN_MAX_VALUE = "SET_MIN_MAX_VALUE";
 const SET_UPDATE_PACKS = "SET_UPDATE_PACKS";
 
 export enum SortType {
-    new = 0,
-    old = 1
+    Z = 0,
+    A = 1
 }
 
 
-const initialState: InitialStateType = {
+const initialState: InitialPackStateType = {
     packs: [ ],
     pageSize: "5",
     totalPacksCount: 0,
@@ -26,11 +26,10 @@ const initialState: InitialStateType = {
     findPackName: "",
     min: 0,
     max: 20,
-    update: SortType.new
-
+    update: "0update"
 }
 
-export const packsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
+export const packsReducer = (state: InitialPackStateType = initialState, action: ActionsTypes): InitialPackStateType => {
     switch (action.type) {
         case SET_CURRENT_PAGE:
             return {
@@ -70,7 +69,7 @@ export const setCardPacksTotalCountAC = (count: number) => ({type: SET_PACKS_TOT
 export const setPacksNameAC = (packName: string) => ({type: SET_PACKS_NAME, packName} as const)
 export const setPageSizeAC = (pageSize: string) => ({type: SET_PAGE_SIZE, pageSize} as const)
 export const setMinMaxValueAC = (value: Array<number>) => ({type: SET_MIN_MAX_VALUE, value} as const)
-export const setUpdatePacksAC = (value: SortType) => ({type: SET_UPDATE_PACKS, value} as const)
+export const setUpdatePacksAC = (value: string) => ({type: SET_UPDATE_PACKS, value} as const)
 export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage} as const)
 export const setPacksAC = (packs: Array<PackType>) => ({type: 'SET-PACKS', packs} as const)
 export const removePackAC = (packID: string) => ({type: 'REMOVE-PACK', packID} as const)
@@ -125,7 +124,7 @@ type ActionsTypes =
 
 type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
 
-type InitialStateType = {
+export type InitialPackStateType = {
     packs: Array<PackType>
     pageSize: any
     totalPacksCount: number
@@ -134,7 +133,7 @@ type InitialStateType = {
     findPackName: string
     min: number
     max: number
-    update: SortType
+    update: string
 }
 
 

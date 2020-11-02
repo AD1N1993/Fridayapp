@@ -1,8 +1,101 @@
-.findFormWrapper{
+.findFormWrapper {
   padding: 10px 0;
-  border: 1px solid grey;
   box-sizing: border-box;
 }
-.findForm{
 
+.findForm {
+
+}
+
+.inputPacks {
+  border: none;
+  border-bottom: 1px solid orange;
+  outline: none;
+  font-size: 16px;
+  font-style: italic;
+  width: 100%;
+  margin-bottom: 10px;
+
+  &::placeholder {
+    color: #bababa;
+  }
+}
+.btns{
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+.btn {
+  padding: 5px 20px;
+  background: linear-gradient(#F3AE0F, #E38916) #E38916;
+  border: none;
+  border-radius: 15px;
+  font-size: 15px;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  &:first-child{
+    margin-right: 20px;
+  }
+  &:last-child{
+  background: #1ea7fd;
+    &:hover{
+      background-color: #62d6c5;
+    }
+  }
+
+  &:hover {
+    background-color: #d6ab62;
+  }
+  &:active {
+    border-color: rgba(177,159,0,1);
+    box-shadow: inset 0 -1px 1px rgba(0,0,0,.1), inset 0 1px 2px rgba(0,0,0,.3), inset 0 0 0 60px rgba(255,255,0,.45);}
+}
+
+.range{
+  margin: 0 auto;
+  width: 240px;
+}
+.line{
+  border-bottom: 1px orange solid;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+h4{
+  margin: 10px 0;
+}
+.sortList{
+  list-style: none;
+  margin: 0 0 10px 0;
+  display: flex;
+  justify-content: space-around;
+
+}
+.sortItem{
+  position: relative;
+  margin-bottom: 10px;
+}
+i{
+  position: absolute;
+  right: -20px;
+  border: solid orange;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  cursor: pointer;
+  &:hover{
+    border: solid #ff5900;
+    border-width: 0 3px 3px 0;
+  }
+}
+
+.arrowUp{
+  top: 0;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+.arrowDown{
+  top: 10px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
