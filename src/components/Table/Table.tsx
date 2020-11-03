@@ -18,6 +18,7 @@ type FormikErrorType = {
 }
 
 export const TablePacks = (props: TablePropsType) => {
+    const dispatch = useDispatch()
     const myUserID = useSelector<AppRootStateType, string>(state => state.app.myUserID)
 
     const formik = useFormik({
@@ -38,8 +39,6 @@ export const TablePacks = (props: TablePropsType) => {
             return errors;
         },
     })
-
-    const dispatch = useDispatch()
 
     const removePack = (packID: string) => {
         dispatch(removePackTC(packID))
