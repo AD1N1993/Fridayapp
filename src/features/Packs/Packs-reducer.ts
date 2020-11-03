@@ -1,8 +1,8 @@
-import {PacksAPI, PackType, PostPackParamsType} from "../../api/api";
 import {Dispatch} from "redux";
 import {AppRootStateType} from "../../app/store";
 import {ThunkAction} from "redux-thunk";
 import {SetStatusApp, setStatusAppAC} from "../../app/app-reducer";
+import {PacksAPI, PackType, PostPackParamsType} from "../../api/api";
 
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_PACKS_TOTAL_COUNT = "SET_PACKS_TOTAL_COUNT";
@@ -12,23 +12,21 @@ const SET_MIN_MAX_VALUE = "SET_MIN_MAX_VALUE";
 const SET_UPDATE_PACKS = "SET_UPDATE_PACKS";
 
 export enum SortType {
-    new = 0,
-    old = 1
+    Z = 0,
+    A = 1
 }
-
-
 const initialState: InitialStateType = {
-    packs: [ ],
-    pageSize: "5",
+    packs: [],
+    pageSize: "6",
     totalPacksCount: 0,
     currentPage: 1,
     isFetching: false,
     findPackName: "",
     min: 0,
     max: 20,
-    update: SortType.new
-
+    update: "0update"
 }
+
 
 export const packsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
@@ -70,7 +68,7 @@ export const setCardPacksTotalCountAC = (count: number) => ({type: SET_PACKS_TOT
 export const setPacksNameAC = (packName: string) => ({type: SET_PACKS_NAME, packName} as const)
 export const setPageSizeAC = (pageSize: string) => ({type: SET_PAGE_SIZE, pageSize} as const)
 export const setMinMaxValueAC = (value: Array<number>) => ({type: SET_MIN_MAX_VALUE, value} as const)
-export const setUpdatePacksAC = (value: SortType) => ({type: SET_UPDATE_PACKS, value} as const)
+export const setUpdatePacksAC = (value: string) => ({type: SET_UPDATE_PACKS, value} as const)
 export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage} as const)
 export const setPacksAC = (packs: Array<PackType>) => ({type: 'SET-PACKS', packs} as const)
 export const removePackAC = (packID: string) => ({type: 'REMOVE-PACK', packID} as const)
@@ -122,10 +120,13 @@ type ActionsTypes =
     | ReturnType<typeof setMinMaxValueAC>
     | ReturnType<typeof setUpdatePacksAC>
     | SetStatusApp
+    | SetCardPacksTotalCountActionType
+
+export type SetCardPacksTotalCountActionType =  ReturnType<typeof setCardPacksTotalCountAC>
 
 type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
 
-type InitialStateType = {
+export type InitialStateType = {
     packs: Array<PackType>
     pageSize: any
     totalPacksCount: number
@@ -134,7 +135,7 @@ type InitialStateType = {
     findPackName: string
     min: number
     max: number
-    update: SortType
+    update: string
 }
 
 

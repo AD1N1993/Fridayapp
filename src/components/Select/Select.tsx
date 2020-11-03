@@ -1,14 +1,16 @@
 import React from 'react';
 import {useFormik} from 'formik';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setPageSizeAC} from "../../features/Packs/Packs-reducer";
+import {AppRootStateType} from "../../app/store";
 
 
 export const Select = () => {
     const dispatch = useDispatch();
+    const pageSize = useSelector<AppRootStateType,string>(state => state.packs.pageSize)
     const formik = useFormik({
         initialValues: {
-            choosePageSize: "",
+            choosePageSize: pageSize,
         },
         onSubmit: values => {
             dispatch(setPageSizeAC(values.choosePageSize));
@@ -23,10 +25,9 @@ export const Select = () => {
                     onChange={formik.handleChange}
                     style={{display: 'block'}}
                 >
-                    <option value={"5"} label="5"/>
-                    <option value={"10"} label="10"/>
-                    <option value={"15"} label="15"/>
-                    <option value={"20"} label="20"/>
+                    <option value={"6"} label="6"/>
+                    <option value={"12"} label="12"/>
+                    <option value={"24"} label="24"/>
                 </select>
             </form>
         </form>

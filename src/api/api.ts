@@ -5,8 +5,11 @@ const settings = {
     withCredentials: true
 }
 
+
+let localBack = "http://localhost:7542/2.0"
+let serverBack = "https://neko-back.herokuapp.com/2.0"
 const instance = axios.create({
-    baseURL: "https://neko-back.herokuapp.com/2.0",
+    baseURL: localBack,
     ...settings
 })
 
@@ -39,10 +42,9 @@ export const authAPI = {
     }
 }
 export const PacksAPI = {
-    getPacks(packName:string="",min: number = 0, max: number = 20, sortPacks: string = '0update',page: number = 1, pageCount: number = 5,  user_id?: string,) {debugger
+    getPacks(packName:string="",min: number = 0, max: number = 20, sortPacks: string = '0',page: number = 1, pageCount: number = 6,  user_id?: string,) {
         return instance.get<GetPacksResponseType>(
-
-            `/cards/pack?packName=${packName}&min=${min}&max=${max}&sortPacks=${sortPacks}updated&page=${page}&pageCount=${pageCount}`
+            `/cards/pack?packName=${packName}&min=${min}&max=${max}&sortPacks=${sortPacks}&page=${page}&pageCount=${pageCount}`
         )
     },
     postPack(cardsPack: PostPackParamsType) {
@@ -56,8 +58,9 @@ export const PacksAPI = {
     }
 }
 export const CardsAPI = {
-    getCards(cardsPack_id: string, min: number = 1, max: number = 4, page: number = 1, pageCount: number = 7) {
-        return instance.get<GetCardsResponseType>('/cards/card?' + cardsPack_id)
+    getCards(cardsPack_id: string, page: number = 1, pageCount: number = 6, min: number = 1, max: number = 4 ) {
+        debugger
+        return instance.get<GetCardsResponseType>(`/cards/card?cardsPack_id=${cardsPack_id}`)
     },
     postCard(card: PostCardParamsType) {
         return instance.post('cards/card', card)

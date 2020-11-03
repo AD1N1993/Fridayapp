@@ -1,5 +1,24 @@
+.stickyContainer{
+}
 .settings{
+  position: sticky;
+  top: 107px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  box-shadow:  2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+  font-style: italic;
+  height: 250px;
+  width: 350px;
+  text-align: left;
+}
+.content{
+  display: flex;
+}
+.pagination{
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 350px;
 }

@@ -1,9 +1,28 @@
 .header{
-  height: 50px;
-  border: 1px solid #000000;
+  position: relative;
+  z-index: 201;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 1px 1px 6px rgba(#000000,0.2);
+  padding: 0 20px 0 20px;
+  background-color: #fcfcfc;
 }
+.logo{
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 900;
+  color: orange;
+  text-decoration: none;
+  letter-spacing: 1.5px;
 
+}
+nav{
+  width: 400px;
+}
 .navList{
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,11 +31,27 @@
   text-decoration: none;
   color: black;
   &:hover{
-    color: #1ea7fd;
+    color: #ffffff;
+    background-color: #c1c1c1;
+    border-radius: 15px;
   }
+}
+.navLinkActive{
+  color: #ffffff;
+  background-color: #c1c1c1;
+  border-radius: 15px;
 }
 
 .linkItem{
   list-style: none;
-  padding: 0 5px 0 5px;
+  padding: 5px 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.login{
+  text-decoration: none;
+  color: orange;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  cursor: pointer;
 }

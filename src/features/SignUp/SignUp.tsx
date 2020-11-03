@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../app/store";
 import { Preloader } from "../../components/Preloader/Preloader";
-import s from "../../app/App.module.scss";
+import s from "../../common/styles/common.module.scss";
 import {RequestStatusType} from "../../app/app-reducer";
 
 
@@ -55,25 +55,25 @@ export const SignUp = () => {
     }
     return (
         <div className={s.formWrapper}>
-            <h2>Registration</h2>
+            <h3 className={styles.registerTitle}>
+                Create an account and start learning.</h3>
             <form>
-                <InputText placeholder={'email'}
+                <InputText placeholder={'Email'}
                            type={'text'}
                            {...formik.getFieldProps('email')}
                 />
                 {formik.errors.email && <div className={styles.error}>{formik.errors.email}</div>}
-                <InputText placeholder={'password'}
+                <InputText placeholder={'Password'}
                            type='password'
                            {...formik.getFieldProps('password')}
                 />
                 {formik.errors.password && <div className={styles.error}>{formik.errors.password}</div>}
                 <Button disabled={false} type='submit' value='register' action={formik.handleSubmit}/>
             </form>
-            <div className={styles.linkToLogin}>
-                <NavLink to='login'>
-                    <span>Login</span>
+                <NavLink className={styles.linkToLogin} to='login'>
+                    <span>
+                    Already have an account?</span>
                 </NavLink>
-            </div>
             {registrationError && <div className={styles.registrationError}>{registrationError}</div>}
         </div>
     );
