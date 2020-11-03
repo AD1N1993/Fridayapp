@@ -1,14 +1,16 @@
 import React from 'react';
 import {useFormik} from 'formik';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setPageSizeAC} from "../../features/Packs/Packs-reducer";
+import {AppRootStateType} from "../../app/store";
 
 
 export const Select = () => {
     const dispatch = useDispatch();
+    const pageSize = useSelector<AppRootStateType,string>(state => state.packs.pageSize)
     const formik = useFormik({
         initialValues: {
-            choosePageSize: "",
+            choosePageSize: pageSize,
         },
         onSubmit: values => {
             dispatch(setPageSizeAC(values.choosePageSize));

@@ -9,7 +9,7 @@ const settings = {
 let localBack = "http://localhost:7542/2.0"
 let serverBack = "https://neko-back.herokuapp.com/2.0"
 const instance = axios.create({
-    baseURL: serverBack,
+    baseURL: localBack,
     ...settings
 })
 
@@ -42,7 +42,7 @@ export const authAPI = {
     }
 }
 export const PacksAPI = {
-    getPacks(packName:string="",min: number = 0, max: number = 20, sortPacks: string = '0',page: number = 1, pageCount: number = 5,  user_id?: string,) {
+    getPacks(packName:string="",min: number = 0, max: number = 20, sortPacks: string = '0',page: number = 1, pageCount: number = 6,  user_id?: string,) {
         return instance.get<GetPacksResponseType>(
             `/cards/pack?packName=${packName}&min=${min}&max=${max}&sortPacks=${sortPacks}&page=${page}&pageCount=${pageCount}`
         )

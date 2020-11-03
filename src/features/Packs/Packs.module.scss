@@ -1,9 +1,8 @@
 .stickyContainer{
-  height: 100vh;
 }
 .settings{
   position: sticky;
-  top: 0;
+  top: 107px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,4 +19,6 @@
 .pagination{
   display: flex;
   align-items: center;
+  margin: 0 auto;
+  width: 350px;
 }

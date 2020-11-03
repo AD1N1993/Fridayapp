@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Pack.module.css"
+import styles from "./Pack.module.scss"
 import {PackType} from "../../../api/api";
-import backgroundPack from "../../../assets/img/backgroundPack/BackgroundPack.png"
+import backgroundPack from "../../../assets/img/BackgroundPack.jpg"
 import {NavLink} from "react-router-dom";
 import {setCurrentPackIdAC} from "../../Cards/Cards-reducer";
 import {useDispatch} from "react-redux";
@@ -32,8 +32,10 @@ export const Pack = (props: PackPropsType) => {
                 </div>
             </NavLink>
             <div>{props.pack.user_name}</div>
+            <button className={styles.start} onClick={removePack}>Start Learn</button>
             {props.myUserID === props.pack.user_id &&
-            <button className={styles.deleteButton} onClick={removePack}>delete pack</button>}
+            <button className={styles.deleteButton} onClick={removePack}>x</button>}
+
         </div>
     )
 }

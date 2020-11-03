@@ -2,7 +2,13 @@ import React from "react";
 import {useFormik} from "formik";
 import s from "./FindForms.module.scss"
 import {useDispatch, useSelector} from "react-redux";
-import {getPacksTC, setMinMaxValueAC, setPacksNameAC, setUpdatePacksAC} from "../../features/Packs/Packs-reducer";
+import {
+    getPacksTC,
+    setMinMaxValueAC,
+    setPacksNameAC,
+    setPageSizeAC,
+    setUpdatePacksAC
+} from "../../features/Packs/Packs-reducer";
 import {Range} from "rc-slider";
 import {AppRootStateType} from "../../app/store";
 
@@ -19,8 +25,9 @@ export const FindForm = () => {
     }
 
     const resetPacks = () => {
-        dispatch(getPacksTC())
         dispatch(setMinMaxValueAC([0,20]))
+        dispatch(setPageSizeAC("6"))
+        dispatch(getPacksTC())
     }
     const formik = useFormik({
         initialValues: {
@@ -48,9 +55,7 @@ export const FindForm = () => {
                 {formik.errors.stringSearch ? <div style={{color: "red"}}>{formik.errors.stringSearch}</div> : null}
                 <div className={s.range}>
                     <span className={s.line}>Number of cards in packs: {min} - {max}</span>
-                    <Range min={0} max={20} step={1} dots={false} defaultValue={[min,max]}
-                           onAfterChange={onRangeValue}
-                    />
+                    <Range min={0} max={20} step={1} dots={false} defaultValue={[min,max]} onAfterChange={onRangeValue} />
                     <h4>Sort by:</h4>
                     <ul className={s.sortList}>
                         <li className={s.sortItem}>
