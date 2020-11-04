@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback, useState} from "react";
 import styles from "./Table.module.scss"
 import {PackType} from "../../api/api";
 import {Pack} from "../../features/Packs/Pack/Pack";
@@ -8,6 +8,7 @@ import {Button} from "../Button/Button";
 import {useFormik} from "formik";
 import {AppRootStateType} from "../../app/store";
 import {createPackTC, removePackTC} from "../../features/Packs/Packs-reducer";
+import {Modal} from "../Modal/Modal";
 
 type TablePropsType = {
     values: Array<PackType>
@@ -18,6 +19,9 @@ type FormikErrorType = {
 }
 
 export const TablePacks = (props: TablePropsType) => {
+    const [isModalAddPackOpened, setIsModalAddPackOpened] = useState(false)
+    const [isModalRemovePackOpened, setIsModalRemovePackOpened] = useState(false)
+    const [packID, setPackID] = useState("")
     const dispatch = useDispatch()
     const myUserID = useSelector<AppRootStateType, string>(state => state.app.myUserID)
 
@@ -28,6 +32,7 @@ export const TablePacks = (props: TablePropsType) => {
         onSubmit: values => {
             dispatch(createPackTC(values.packName));
             formik.resetForm();
+            setIsModalAddPackOpened(false)
         },
         validate: (values) => {
             const errors: FormikErrorType = {};
@@ -40,29 +45,56 @@ export const TablePacks = (props: TablePropsType) => {
         },
     })
 
-    const removePack = (packID: string) => {
+    const openModalRemovePack = useCallback((packID: string) => {
+        setIsModalRemovePackOpened(true)
+        setPackID(packID)
+    }, [])
+
+    const removePack = useCallback(() => {
         dispatch(removePackTC(packID))
-    }
+        setIsModalRemovePackOpened(false)
+    }, [packID])
 
     return (
         <div className={styles.tablePacksBlock}>
             <div className={styles.tablePackContainer}>
                 <div className={styles.packs}>
-                    {props.values.map(p => <Pack myUserID={myUserID} pack={p} key={p._id} removePack={removePack}/>)}
+                    {props.values.map(p => <Pack myUserID={myUserID} pack={p} key={p._id} openModalRemovePack={openModalRemovePack}/>)}
                 </div>
             </div>
-            <div className={styles.addPackBlock}>
-                <form>
-                    <InputText placeholder={'pack name'}
-                               type={'text'}
-                               {...formik.getFieldProps('packName')}
-                    />
-                    {formik.errors.packName && <div className={styles.error}>{formik.errors.packName}</div>}
-                    <div className={styles.buttonBlock}>
-                        <Button disabled={false} type='submit' value='add new pack' action={formik.handleSubmit}/>
-                    </div>
-                </form>
+            <div>
+                <Button value={'Add new pack'} action={() => setIsModalAddPackOpened(true)}/>
             </div>
+
+            {isModalAddPackOpened &&
+            <Modal title={'Add pack'} onClose={() => {
+                setIsModalAddPackOpened(false)
+            }} duration={600} showCloseBtn>
+                <div className={styles.addPackBlock}>
+                    <form>
+                        <InputText placeholder={'pack name'}
+                                   type={'text'}
+                                   {...formik.getFieldProps('packName')}
+                        />
+                        {formik.errors.packName && <div className={styles.error}>{formik.errors.packName}</div>}
+                        <div className={styles.buttonBlock}>
+                            <Button disabled={false} type='submit' value='submit' action={formik.handleSubmit}/>
+                        </div>
+                    </form>
+                </div>
+            </Modal>
+            }
+            {isModalRemovePackOpened &&
+            <Modal title={'Delete pack'} onClose={() => {
+                setIsModalRemovePackOpened(false)
+            }} duration={600} showCloseBtn>
+                <div className={styles.deletePackBlock}>
+                    <div className={styles.warnText}>This action cannon be undone.</div>
+                    <button className={styles.cancelButton} onClick={() => setIsModalRemovePackOpened(false)}>CANCEL</button>
+                    <button className={styles.deleteButton} onClick={removePack}>DELETE</button>
+                </div>
+            </Modal>
+            }
         </div>
     )
 }

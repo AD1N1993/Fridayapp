@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./Pack.module.scss"
 import {PackType} from "../../../api/api";
-import backgroundPack from "../../../assets/img/BackgroundPack.jpg"
+import backgroundPack from "../../../assets/img/backgroundPack.jpg"
 import {NavLink} from "react-router-dom";
 import {setCurrentPackIdAC} from "../../Cards/Cards-reducer";
 import {useDispatch} from "react-redux";
 
 type PackPropsType = {
     pack: PackType
-    removePack: (packID: string) => void
+    openModalRemovePack: (packID: string) => void
     myUserID: string
 }
 
@@ -16,7 +16,7 @@ export const Pack = (props: PackPropsType) => {
     const dispatch = useDispatch()
 
     const removePack = () => {
-        props.removePack(props.pack._id)
+        props.openModalRemovePack(props.pack._id)
     }
     const changeCurrentPackID = (packID: string) => {
         debugger
