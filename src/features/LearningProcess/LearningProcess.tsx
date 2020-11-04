@@ -21,7 +21,7 @@ export const LearningProcess = () => {
 
     const currentCard = useSelector<AppRootStateType, CardType>(state => state.learningProcess.currentCard)
     const setCurrentCard = () => {
-        let card = Math.floor(Math.random() * cards.length + 1)
+        let card = Math.floor(Math.random() * cards.length)
         dispatch(setCurrentCardAC(cards[card]))
     }
     const [isShowAnswer, setShowAnswer] = useState(true)
