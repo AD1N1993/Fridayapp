@@ -33,7 +33,7 @@ export const Header = () => {
                         <NavLink className={s.navLink} to="signUp" activeClassName={s.navLinkActive}>
                             <li className={s.linkItem}> Signup</li>
                         </NavLink>
-                        <NavLink className={s.navLink} to="cards" activeClassName={""}>
+                        <NavLink className={s.navLink} to="cards" activeClassName={s.navLinkActive}>
                             <li className={s.linkItem}>Cards</li>
                         </NavLink>
                         <NavLink className={s.navLink} to="packs" activeClassName={s.navLinkActive}>

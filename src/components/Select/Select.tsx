@@ -3,6 +3,7 @@ import {useFormik} from 'formik';
 import {useDispatch, useSelector} from "react-redux";
 import {setPageSizeAC} from "../../features/Packs/Packs-reducer";
 import {AppRootStateType} from "../../app/store";
+import s from "./Select.module.scss"
 
 
 export const Select = () => {
@@ -17,11 +18,10 @@ export const Select = () => {
         },
     })
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <form onSubmit={formik.handleSubmit} onChange={formik.submitForm}>
+            <form onSubmit={formik.handleSubmit} onChange={formik.submitForm} className={s.filters}>
                 <select
                     name="choosePageSize"
-                    value={formik.values.choosePageSize}
+                    value={pageSize}
                     onChange={formik.handleChange}
                     style={{display: 'block'}}
                 >
@@ -30,6 +30,5 @@ export const Select = () => {
                     <option value={"24"} label="24"/>
                 </select>
             </form>
-        </form>
     );
 }

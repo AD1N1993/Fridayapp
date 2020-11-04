@@ -7,7 +7,6 @@ import commonStyles from "../../common/styles/common.module.scss"
 import {getPacksTC, InitialStateType, setCurrentPageAC} from "./Packs-reducer";
 import {FindForm} from "../../components/FindForm/FindForm";
 import {Paginator} from "../../components/Paginator/Paginator";
-import {Select} from "../../components/Select/Select";
 import {Redirect} from "react-router-dom";
 import 'rc-slider/assets/index.css';
 export const Packs = () => {
@@ -32,21 +31,17 @@ export const Packs = () => {
                     <div className={s.settings}>
                         <h3>Filters</h3>
                         <FindForm/>
+
                     </div>
                 </div>
-                <div>
+                <div className={s.packsWrapper}>
                     <TablePacks values={packs}/>
+                    <Paginator totalItemsCount={totalPacksCount}
+                               pageSize={pageSize} currentPage={currentPage}
+                               portionSize={7}
+                               onChangePage={onChangeCurrentPage}/>
                 </div>
             </div>
-
-            <div className={s.pagination}>
-                <Paginator totalItemsCount={totalPacksCount}
-                           pageSize={pageSize} currentPage={currentPage}
-                           portionSize={7}
-                           onChangePage={onChangeCurrentPage}/>
-                Size:<Select/>
-            </div>
-
         </div>
     );
 }

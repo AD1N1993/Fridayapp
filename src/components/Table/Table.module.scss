@@ -17,44 +17,10 @@
 
   .addPackBlock {
     margin-bottom: 50px;
-
-    .error {
-      color: red;
-    }
-
-    .buttonBlock {
-      margin-top: 10px;
-    }
-  }
-
-  .deletePackBlock {
-
-    .warnText {
-      color: #e27171;
-      font-size: 25px;
-    }
-
-    .cancelButton {
-      width: 150px;
-      height: 50px;
-      border-radius: 5px;
-      background-color: white;
-      font-size: 18px;
-    }
-
-    .deleteButton {
-      width: 150px;
-      height: 50px;
-      background-color: red;
-      color: white;
-      margin: 10px;
-      border-radius: 5px;
-      font-size: 18px;
-    }
-  }
-
 }
-
-
-
-
+.error {
+    color: red;
+}
+.buttonBlock {
+    margin-top: 10px;
+}

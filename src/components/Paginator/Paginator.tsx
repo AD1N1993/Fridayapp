@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import s from "./Paginator.module.scss"
+import {Select} from "../Select/Select";
 
 type PaginatorPropsType = {
     totalItemsCount: number
@@ -69,6 +70,7 @@ export const Paginator = ({totalItemsCount, pageSize, currentPage, onChangePage,
                 <button className={`${s.btn} ${s.btnRight}`}
                         onClick={setNextPage}
                         disabled={currentPage === pages[pages.length - 1]}>{">"}</button>
+                Size:<Select/>
             </div>
         </>
     )

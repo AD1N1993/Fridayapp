@@ -14,6 +14,7 @@ import s from "./App.module.scss"
 import {Packs} from "../features/Packs/Packs";
 import {Main} from "../features/Main/Main";
 import {Cards} from "../features/Cards/Cards";
+import {LearningProcess} from "../features/LearningProcess/LearningProcess";
 function App(){
     const dispatch = useDispatch()
     const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
@@ -35,6 +36,7 @@ function App(){
                 <Route path={"/packs"} render={() => <Packs/>}/>
                 <Route path={"/profile"} render={() => <Profile/>}/>
                 <Route path={"/cards"} render={() => <Cards/>}/>
+                <Route path={"/learningProcess"} render={() => <LearningProcess/>}/>
                 <Route path={"/login"} render={() => <Login/>}/>
                 <Route path={"/signup"} render={() => <SignUp/>}/>
                 <Route path={"/recovery"} render={() => <Recovery/>}/>
