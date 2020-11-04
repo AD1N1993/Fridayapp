@@ -32,7 +32,11 @@ export const Pack = (props: PackPropsType) => {
                 </div>
             </NavLink>
             <div>{props.pack.user_name}</div>
-            <button className={styles.start} onClick={removePack}>Start Learn</button>
+            <button className={styles.start}>
+                <NavLink to={'/learningProcess'} onClick={() => changeCurrentPackID(props.pack._id)}>
+                    Start Learn
+                </NavLink>
+            </button>
             {props.myUserID === props.pack.user_id &&
             <button className={styles.deleteButton} onClick={removePack}>x</button>}
 

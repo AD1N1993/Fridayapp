@@ -6,6 +6,7 @@ import {authReducer} from "../features/Login/auth-reducer";
 import {signUpReducer} from "../features/SignUp/signup-reducer";
 import {packsReducer} from "../features/Packs/Packs-reducer";
 import {cardsReducer} from "../features/Cards/Cards-reducer";
+import {learningProcessReducer} from "../features/LearningProcess/learningProcess-reducer";
 
 const rootReducer = combineReducers({
     app: appReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     signup: signUpReducer,
     recovery: recoveryReducer,
     packs: packsReducer,
-    cards: cardsReducer
+    cards: cardsReducer,
+    learningProcess: learningProcessReducer
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
