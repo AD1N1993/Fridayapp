@@ -1,22 +1,21 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../app/store";
-import {CardType} from "../../api/api";
-import {getCardsTC} from "./Cards-reducer";
+import {getCardsTC, InitialStateType, setCurrentCardPageAC} from "./Cards-reducer";
+import {TableCards} from "./TableCards/TableCards";
+import {Paginator} from "../../components/Paginator/Paginator";
 
 export const Cards = () => {
-    const cards = useSelector<AppRootStateType, Array<CardType>>(state => state.cards.cards)
+    const {cards,totalCardsCount,pageSize,currentPage} = useSelector<AppRootStateType, InitialStateType>(state => state.cards)
     const currentPackID = useSelector<AppRootStateType, string>(state => state.cards.currentPackID)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getCardsTC(currentPackID))
-    }, [currentPackID])
-
-    return (
-        <div>
-            {cards.map(c => <div>{c.question}</div>)}
-            {/*<TableCards values={cards}/>*/}
-        </div>
-    )
+        dispatch(getCardsTC(currentPackID,currentPage))
+    }, [currentPackID,currentPage])
+    const onChangeCurrentPage = (currentPage: number) => {dispatch(setCurrentCardPageAC(currentPage))}
+    return (<>
+            <TableCards values={cards}/>
+            <Paginator totalItemsCount={totalCardsCount} pageSize={pageSize.toString()} currentPage={currentPage} portionSize={4} onChangePage={onChangeCurrentPage}/>
+    </>)
 }

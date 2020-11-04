@@ -19,23 +19,21 @@ export const Pack = (props: PackPropsType) => {
         props.removePack(props.pack._id)
     }
     const changeCurrentPackID = (packID: string) => {
-        debugger
         dispatch(setCurrentPackIdAC(packID))
     }
 
     return (
         <div className={styles.packBlock} style={{backgroundImage: `url(${backgroundPack})`}}>
-            <h2>{props.pack.name}</h2>
-            <NavLink to='/cards' onClick={ () => changeCurrentPackID(props.pack._id)}>
-                <div className={styles.cardsShow}>
+            <h3 className={styles.packTitle}>{props.pack.name}</h3>
+            { props.pack.cardsCount === 0 ? <span className={styles.count}>Cards: {props.pack.cardsCount}</span>:
+            <NavLink aria-disabled={"true"} className={styles.count} to='/cards' onClick={ () => changeCurrentPackID(props.pack._id)}>
                     Cards: {props.pack.cardsCount}
-                </div>
             </NavLink>
-            <div>{props.pack.user_name}</div>
+            }
+            <div className={styles.author}>{props.pack.user_name}</div>
             <button className={styles.start} onClick={removePack}>Start Learn</button>
             {props.myUserID === props.pack.user_id &&
             <button className={styles.deleteButton} onClick={removePack}>x</button>}
-
         </div>
     )
 }

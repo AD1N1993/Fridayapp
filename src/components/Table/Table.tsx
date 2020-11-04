@@ -45,24 +45,24 @@ export const TablePacks = (props: TablePropsType) => {
     }
 
     return (
-        <div className={styles.tablePacksBlock}>
-            <div className={styles.tablePackContainer}>
-                <div className={styles.packs}>
-                    {props.values.map(p => <Pack myUserID={myUserID} pack={p} key={p._id} removePack={removePack}/>)}
-                </div>
+        <>
+
+            <div className={styles.packsTable}>
+                {props.values.map(p => <Pack myUserID={myUserID} pack={p} key={p._id} removePack={removePack}/>)}
             </div>
+
             <div className={styles.addPackBlock}>
-                <form>
-                    <InputText placeholder={'pack name'}
-                               type={'text'}
-                               {...formik.getFieldProps('packName')}
-                    />
-                    {formik.errors.packName && <div className={styles.error}>{formik.errors.packName}</div>}
-                    <div className={styles.buttonBlock}>
-                        <Button disabled={false} type='submit' value='add new pack' action={formik.handleSubmit}/>
-                    </div>
-                </form>
+            <form>
+                <InputText placeholder={'pack name'}
+                           type={'text'}
+                           {...formik.getFieldProps('packName')}
+                />
+                {formik.errors.packName && <div className={styles.error}>{formik.errors.packName}</div>}
+                <div className={styles.buttonBlock}>
+                    <Button disabled={false} type='submit' value='add new pack' action={formik.handleSubmit}/>
+                </div>
+            </form>
             </div>
-        </div>
+        </>
     )
 }
