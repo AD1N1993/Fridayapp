@@ -1,77 +1,116 @@
 .packBlock {
   position: relative;
-  border: 1px solid;
   border-radius: 10px;
-  /*width: 27vh;*/
   width: 195px;
-  /*width: 15%;*/
   height: 300px;
   text-align: center;
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
-  background-color: #66bf3c;
+  justify-content: flex-start;
   margin: 10px;
   box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, 0.11);
   color: ivory;
   font-size: 20px;
-  font-weight: bold;
-  font-family: Corbel sans-serif;
+  font-family: sans-serif;
 
-  &:hover {
-    transform: scale(1.05);
-    transition: all 0.5s;
-    border: 1px solid orange;
+  &:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #050200;
+    opacity: 0.3;
+    border-radius: 10px;
+    z-index: 0;
   }
+
+  //
+  //&:hover {
+  //  transform: scale(1.01);
+  //  transition: all 0.5s;
+  //  border: 1px solid orange;
+  //}
 }
+
+.packTitle {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+  padding-top: 15px;
+
+}
+
+.author {
+  flex-grow: 1;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: normal;
+  padding: 0 20px;
+}
+
 .start {
-  background-color:#44c767;
-  border-radius:28px;
-  border:1px solid #18ab29;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-size:17px;
-  padding:16px 31px;
-  text-decoration:none;
-  text-shadow:0px 1px 0px #2f6627;
-  a {
-    color:#ffffff;
-    text-decoration: none;
-  }
-}
-.start:hover {
-  background-color:#5cbf2a;
-}
-.start:active {
-  position:relative;
-  top:1px;
+  position: relative;
+  z-index: 1;
+  background-color: #228F78;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  margin: 0 auto;
+  width: 150px;
+  font-size: 17px;
+  padding: 8px 15px;
+  text-decoration: none;
+  margin-bottom: 15px;
+  border: none;
 }
 
+.start:hover {
+  background-color: #1ca05c;
+}
+
+.start:active {
+  position: relative;
+  top: 1px;
+}
 
 .deleteButton {
+  outline: none;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-  border-radius:20px;
-  display:inline-block;
-  cursor:pointer;
-  font-size:15px;
+  top: 5px;
+  right: 5px;
+  background: #d2d2d2;
+  border-radius: 20px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 15px;
   width: 20px;
   height: 20px;
-  text-decoration:none;
+  text-decoration: none;
   border: none;
-  color: red;
+  color: #2f2f2f;
+  line-height: 10px;
+
   &:hover {
-    background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-    background-color:#ffab23;
+    background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+    background-color: #ffab23;
   }
 }
 
-.cardsShow {
-  background-color: #66bf3c;
+.count {
+  text-decoration: none;
+  background-color: #228F78;
   cursor: pointer;
+  color: #f1f1f1;
+  opacity: 0.8;
+  margin-bottom: 18px;
+  font-size: 16px;
+  padding: 5px 0;
+
+  &:hover {
+    color: white;;
+  }
 }
 
 .link {

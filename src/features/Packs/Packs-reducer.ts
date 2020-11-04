@@ -110,7 +110,7 @@ export const createPackTC = (packName: string) => {
 
 //types
 type ActionsTypes =
-    | ReturnType<typeof setCurrentPageAC>
+    | SetCurrentPageAC
     | ReturnType<typeof setPacksAC>
     | ReturnType<typeof removePackAC>
     | ReturnType<typeof createPackAC>
@@ -123,6 +123,7 @@ type ActionsTypes =
     | SetCardPacksTotalCountActionType
 
 export type SetCardPacksTotalCountActionType =  ReturnType<typeof setCardPacksTotalCountAC>
+export type SetCurrentPageAC =  ReturnType<typeof setCurrentPageAC>
 
 type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
 

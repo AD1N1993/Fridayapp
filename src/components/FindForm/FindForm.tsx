@@ -3,7 +3,7 @@ import {useFormik} from "formik";
 import s from "./FindForms.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {
-    getPacksTC,
+    getPacksTC, setCurrentPageAC,
     setMinMaxValueAC,
     setPacksNameAC,
     setPageSizeAC,
@@ -27,6 +27,7 @@ export const FindForm = () => {
     const resetPacks = () => {
         dispatch(setMinMaxValueAC([0,20]))
         dispatch(setPageSizeAC("6"))
+        dispatch(setCurrentPageAC(1))
         dispatch(getPacksTC())
     }
     const formik = useFormik({
