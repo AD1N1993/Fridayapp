@@ -38,9 +38,8 @@ export const TablePacks = (props: TablePropsType) => {
             const errors: FormikErrorType = {};
             if (!values.packName) {
                 errors.packName = 'Required';
-            } else if (values.packName.length > 15) {
-                errors.packName = 'Name pack must be no more than 12 characters';
             }
+
             return errors;
         },
     })
@@ -95,6 +94,9 @@ export const TablePacks = (props: TablePropsType) => {
                 </div>
             </Modal>
             }
+            {/*<a href={''} className={styles.scrollUp}>
+                <i className={styles.fa_fa_chevron_up}> </i>
+            </a>*/}
         </div>
     )
 }

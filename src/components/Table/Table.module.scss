@@ -17,13 +17,63 @@
 
   .addPackBlock {
     margin-bottom: 50px;
+    .error {
+      color: red;
+    }
+    .buttonBlock {
+      margin-top: 10px;
+    }
+
+  }
+  .deletePackBlock {
+    .warnText {
+      font-size: 24px;
+      color: #e27171;
+    }
+    .cancelButton {
+      width: 150px;
+      height: 50px;
+      background-color: white;
+      font-size: 18px;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .deleteButton {
+      width: 150px;
+      height: 50px;
+      background-color: red;
+      font-size: 18px;
+      border-radius: 5px;
+      color: white;
+      margin: 5px;
+      cursor: pointer;
+    }
+  }
+  .scrollUp {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #fff;
+    text-decoration: none;
+    //opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+    background: #66bf3c;
+    position: fixed;
+    bottom: 40px;
+    right: 32px;
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+  }
+  .fa_fa_chevron_up {
+    display: flex;
   }
 
-  .error {
-    color: red;
-  }
-
-  .buttonBlock {
-    margin-top: 10px;
-  }
 }

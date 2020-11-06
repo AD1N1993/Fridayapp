@@ -10,6 +10,7 @@ let localBack = "http://localhost:7542/2.0"
 let serverBack = "https://neko-back.herokuapp.com/2.0"
 const instance = axios.create({
     baseURL: serverBack,
+
     ...settings
 })
 
@@ -62,10 +63,11 @@ export const CardsAPI = {
         return instance.get<GetCardsResponseType>(`/cards/card?cardsPack_id=${cardsPack_id}&cardQuestion=${cardQuestion}&page=${page}&pageCount=${70},`)
     },
     postCard(card: PostCardParamsType) {
-        return instance.post('cards/card', card)
+        debugger
+        return instance.post('cards/card', {card: card} )
     },
-    deleteCard(id: string) {
-        return instance.delete('cards/card?' + id)
+    deleteCard(cardID: string) {
+        return instance.delete(`cards/card?id=${cardID}`)
     },
     putCard(card: PutCardParamsType) {
         return instance.put('cards/card', card)
