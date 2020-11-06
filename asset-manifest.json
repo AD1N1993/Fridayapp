@@ -1,26 +1,29 @@
 {
   "files": {
-    "main.css": "/Fridayapp/static/css/main.f4f2e6e0.chunk.css",
-    "main.js": "/Fridayapp/static/js/main.7a70229a.chunk.js",
-    "main.js.map": "/Fridayapp/static/js/main.7a70229a.chunk.js.map",
+    "main.css": "/Fridayapp/static/css/main.d25a754c.chunk.css",
+    "main.js": "/Fridayapp/static/js/main.34359065.chunk.js",
+    "main.js.map": "/Fridayapp/static/js/main.34359065.chunk.js.map",
     "runtime-main.js": "/Fridayapp/static/js/runtime-main.2465b693.js",
     "runtime-main.js.map": "/Fridayapp/static/js/runtime-main.2465b693.js.map",
     "static/css/2.ed590494.chunk.css": "/Fridayapp/static/css/2.ed590494.chunk.css",
-    "static/js/2.400fcac0.chunk.js": "/Fridayapp/static/js/2.400fcac0.chunk.js",
-    "static/js/2.400fcac0.chunk.js.map": "/Fridayapp/static/js/2.400fcac0.chunk.js.map",
+    "static/js/2.e71f6db6.chunk.js": "/Fridayapp/static/js/2.e71f6db6.chunk.js",
+    "static/js/2.e71f6db6.chunk.js.map": "/Fridayapp/static/js/2.e71f6db6.chunk.js.map",
     "index.html": "/Fridayapp/index.html",
-    "precache-manifest.f07b497fdf7eefe573d0be6c7e486a8d.js": "/Fridayapp/precache-manifest.f07b497fdf7eefe573d0be6c7e486a8d.js",
+    "precache-manifest.af6b5e6e4eed1e719cceb0e35e326725.js": "/Fridayapp/precache-manifest.af6b5e6e4eed1e719cceb0e35e326725.js",
     "service-worker.js": "/Fridayapp/service-worker.js",
     "static/css/2.ed590494.chunk.css.map": "/Fridayapp/static/css/2.ed590494.chunk.css.map",
-    "static/css/main.f4f2e6e0.chunk.css.map": "/Fridayapp/static/css/main.f4f2e6e0.chunk.css.map",
-    "static/js/2.400fcac0.chunk.js.LICENSE.txt": "/Fridayapp/static/js/2.400fcac0.chunk.js.LICENSE.txt",
-    "static/media/loader.gif": "/Fridayapp/static/media/loader.e46d3467.gif"
+    "static/css/main.d25a754c.chunk.css.map": "/Fridayapp/static/css/main.d25a754c.chunk.css.map",
+    "static/js/2.e71f6db6.chunk.js.LICENSE.txt": "/Fridayapp/static/js/2.e71f6db6.chunk.js.LICENSE.txt",
+    "static/media/backgroundPack.jpg": "/Fridayapp/static/media/backgroundPack.2d5de1ce.jpg",
+    "static/media/empty.png": "/Fridayapp/static/media/empty.b0fabf78.png",
+    "static/media/full.png": "/Fridayapp/static/media/full.c73cda1e.png",
+    "static/media/loader.gif": "/Fridayapp/static/media/loader.c71eb0a3.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.2465b693.js",
     "static/css/2.ed590494.chunk.css",
-    "static/js/2.400fcac0.chunk.js",
-    "static/css/main.f4f2e6e0.chunk.css",
-    "static/js/main.7a70229a.chunk.js"
+    "static/js/2.e71f6db6.chunk.js",
+    "static/css/main.d25a754c.chunk.css",
+    "static/js/main.34359065.chunk.js"
   ]
 }
