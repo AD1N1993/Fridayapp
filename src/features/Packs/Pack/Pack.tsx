@@ -34,7 +34,7 @@ export const Pack = (props: PackPropsType) => {
 
             <div className={styles.author}>{props.pack.user_name}</div>
             <button className={styles.start}>
-                <NavLink to={'/learningProcess'} onClick={() => changeCurrentPackID(props.pack._id, props.pack.user_id)}>
+                <NavLink className={styles.link} to={'/learningProcess'} onClick={() => changeCurrentPackID(props.pack._id)}>
                     Start Learn
                 </NavLink>
             </button>

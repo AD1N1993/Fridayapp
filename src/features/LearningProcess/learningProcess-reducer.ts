@@ -4,7 +4,7 @@ const initialState: InitialStateType = {
     currentCard: null
 }
 
-export const learningProcessReducer = (state: InitialStateType = initialState, action: ActionsTypes) => {
+export const learningProcessReducer = (state: InitialStateType = initialState, action: ActionsTypes):InitialStateType => {
     switch (action.type) {
         case "SET_CURRENT_CARD":
             return {
@@ -15,7 +15,7 @@ export const learningProcessReducer = (state: InitialStateType = initialState, a
     }
 }
 
-export const setCurrentCardAC = (card: any) => ({type: "SET_CURRENT_CARD", card} as const)
+export const setCurrentCardAC = (card: CardType| null) => ({type: "SET_CURRENT_CARD", card} as const)
 
 type ActionsTypes = ReturnType<typeof setCurrentCardAC>
 

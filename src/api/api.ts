@@ -60,7 +60,7 @@ export const PacksAPI = {
 }
 export const CardsAPI = {
     getCards(cardsPack_id: string,cardQuestion:string="", page: number = 1, pageCount: number = 50, min: number = 1, max: number = 4 ) {
-        return instance.get<GetCardsResponseType>(`/cards/card?cardsPack_id=${cardsPack_id}&cardQuestion=${cardQuestion}&page=${page}&pageCount=${70},`)
+        return instance.get<GetCardsResponseType>(`/cards/card?cardsPack_id=${cardsPack_id}&cardQuestion=${cardQuestion}&page=${page}&pageCount=${10},`)
     },
     postCard(card: PostCardParamsType) {
         debugger
