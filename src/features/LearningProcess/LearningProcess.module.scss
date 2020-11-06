@@ -3,4 +3,23 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  min-height: 100vh;
+  margin-top: -100px;
+}
+.nextBtn{
+  margin-top: 10px;
+  background-color: #228F78;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #ffffff;
+  width: 150px;
+  font-size: 17px;
+  padding: 8px 15px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  &:active{
+    position: relative;
+    top: 1px;
+  }
 }

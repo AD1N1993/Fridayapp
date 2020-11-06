@@ -18,6 +18,8 @@ export const Pack = (props: PackPropsType) => {
     const openModalRemovePack = () => {
         props.openModalRemovePack(props.pack._id)
     }
+
+
     const changeCurrentPackID = (packID: string, userID: string) => {
         dispatch(setCurrentPackIdAC(packID))
         dispatch(setCurrentPackUserIdAC(userID))
@@ -25,16 +27,16 @@ export const Pack = (props: PackPropsType) => {
 
     return (
         <div className={styles.packBlock} style={{backgroundImage: `url(${backgroundPack})`}}>
-            <h3 className={styles.packTitle}>{props.pack.name}</h3>
-            {/*{ props.pack.cardsCount === 0 ? <span className={styles.count}>Cards: {props.pack.cardsCount}</span>:*/}
-                <NavLink aria-disabled={"true"} className={styles.count} to='/cards'
-                         onClick={ () => changeCurrentPackID(props.pack._id, props.pack.user_id)}>
+            <h3 className={styles.packTitle}>{props.pack.name.slice(0,14)}</h3>
+            {props.pack.cardsCount === 0 ? <span style={{color:"orange",cursor:"default"}} className={styles.count}>Cards: {props.pack.cardsCount}</span> :
+                <NavLink aria-disabled={"true"} className={styles.count} to={`/cards/${props.pack._id}`}
+                         onClick={() => changeCurrentPackID(props.pack._id, props.pack.user_id)}>
                     Cards: {props.pack.cardsCount}
                 </NavLink>
-
+            }
             <div className={styles.author}>{props.pack.user_name}</div>
             <button className={styles.start}>
-                <NavLink className={styles.link} to={'/learningProcess'} onClick={() => changeCurrentPackID(props.pack._id)}>
+                <NavLink className={styles.link} to={`/learningProcess/${props.pack._id}`} onClick={() => changeCurrentPackID(props.pack._id, props.myUserID )}>
                     Start Learn
                 </NavLink>
             </button>

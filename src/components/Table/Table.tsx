@@ -61,7 +61,7 @@ export const TablePacks = (props: TablePropsType) => {
                     {props.values.map(p => <Pack myUserID={myUserID} pack={p} key={p._id} openModalRemovePack={openModalRemovePack}/>)}
                 </div>
             </div>
-            <div>
+            <div className={styles.addBtn}>
                 <Button value={'Add new pack'} action={() => setIsModalAddPackOpened(true)}/>
             </div>
 
@@ -94,9 +94,6 @@ export const TablePacks = (props: TablePropsType) => {
                 </div>
             </Modal>
             }
-            {/*<a href={''} className={styles.scrollUp}>
-                <i className={styles.fa_fa_chevron_up}> </i>
-            </a>*/}
         </div>
     )
 }

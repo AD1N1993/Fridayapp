@@ -22,7 +22,7 @@ const initialState: InitialStateType = {
     currentPage: 1,
     isFetching: false,
     findPackName: "",
-    min: 15,
+    min: 0,
     max: 20,
     update: "0update"
 }
@@ -116,7 +116,7 @@ type ActionsTypes =
     | ReturnType<typeof createPackAC>
     | ReturnType<typeof setCardPacksTotalCountAC>
     | ReturnType<typeof setPacksNameAC>
-    | ReturnType<typeof setPageSizeAC>
+    | SetPageSize
     | ReturnType<typeof setMinMaxValueAC>
     | ReturnType<typeof setUpdatePacksAC>
     | SetStatusApp
@@ -124,6 +124,7 @@ type ActionsTypes =
 
 export type SetCardPacksTotalCountActionType =  ReturnType<typeof setCardPacksTotalCountAC>
 export type SetCurrentPageAC =  ReturnType<typeof setCurrentPageAC>
+export type SetPageSize =ReturnType<typeof setPageSizeAC>
 
 type ThunkType = ThunkAction<Promise<void>, AppRootStateType, unknown, ActionsTypes>
 

@@ -36,10 +36,13 @@ export const Packs = () => {
                 </div>
                 <div className={s.packsWrapper}>
                     <TablePacks values={packs}/>
-                    <Paginator totalItemsCount={totalPacksCount}
-                               pageSize={pageSize} currentPage={currentPage}
-                               portionSize={7}
-                               onChangePage={onChangeCurrentPage}/>
+                    <div className={s.paginator}>
+                        <Paginator totalItemsCount={totalPacksCount}
+                                   pageSize={pageSize} currentPage={currentPage}
+                                   portionSize={7}
+                                   onChangePage={onChangeCurrentPage}/>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -99,7 +99,7 @@ export const TableCards = (props: TableCardsPropsType) => {
             </Modal>
             }
             <div className={styles.cards}>
-                {props.values.map(c => <Card card={c} openModalRemoveCard={openModalRemoveCard}/>)}
+                {props.values.map(c => <Card key={c._id} card={c} openModalRemoveCard={openModalRemoveCard}/>)}
             </div>
             <div>
                 {myUserID === currentPackUserID &&

@@ -70,7 +70,7 @@ export const Paginator = ({totalItemsCount, pageSize, currentPage, onChangePage,
                 <button className={`${s.btn} ${s.btnRight}`}
                         onClick={setNextPage}
                         disabled={currentPage === pages[pages.length - 1]}>{">"}</button>
-                Size:<Select/>
+                Size:<Select pageSize={pageSize}/>
             </div>
         </>
     )

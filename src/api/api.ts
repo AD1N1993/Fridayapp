@@ -36,14 +36,14 @@ export const authAPI = {
         return instance.delete("/auth/me")
     },
     registered(data: RegistrationParamsType) {
-        return  instance.post<RegistrationResponseType>('/auth/register', data)
+        return instance.post<RegistrationResponseType>('/auth/register', data)
     },
     me() {
         return instance.post('auth/me')
     }
 }
 export const PacksAPI = {
-    getPacks(packName:string="",min: number = 0, max: number = 20, sortPacks: string = '0',page: number = 1, pageCount: number = 6,  user_id?: string,) {
+    getPacks(packName: string = "", min: number = 0, max: number = 20, sortPacks: string = '0', page: number = 1, pageCount: number = 6, user_id?: string,) {
         return instance.get<GetPacksResponseType>(
             `/cards/pack?packName=${packName}&min=${min}&max=${max}&sortPacks=${sortPacks}&page=${page}&pageCount=${pageCount}`
         )
@@ -59,18 +59,21 @@ export const PacksAPI = {
     }
 }
 export const CardsAPI = {
-    getCards(cardsPack_id: string,cardQuestion:string="", page: number = 1, pageCount: number = 50, min: number = 1, max: number = 4 ) {
+    getCards(cardsPack_id: string, cardQuestion: string = " ", page: number = 1, pageCount: number = 50, min: number = 1, max: number = 4) {
         return instance.get<GetCardsResponseType>(`/cards/card?cardsPack_id=${cardsPack_id}&cardQuestion=${cardQuestion}&page=${page}&pageCount=${10},`)
     },
     postCard(card: PostCardParamsType) {
         debugger
-        return instance.post('cards/card', {card: card} )
+        return instance.post('cards/card', {card: card})
     },
     deleteCard(cardID: string) {
         return instance.delete(`cards/card?id=${cardID}`)
     },
     putCard(card: PutCardParamsType) {
         return instance.put('cards/card', card)
+    },
+    gradeCard(card_id: string, grade: number) {
+        return instance.put<GradeCardResponseType>('cards/grade', {card_id, grade})
     }
 }
 
@@ -101,7 +104,7 @@ export type RegistrationResponseType = {
     }
 }
 export type GetPacksResponseType = {
-    cardPacks:Array<PackType>
+    cardPacks: Array<PackType>
     page: number
     pageCount: number
     cardPacksTotalCount: number
@@ -185,5 +188,21 @@ export type PutCardParamsType = {
     _id: string
     question?: string
     comments?: string
+}
+export type GradeCardResponseType = {
+    token: string
+    tokenDeathTime: number
+    updatedGrade: {
+        card_id: string
+        cardsPack_id: string
+        created: string
+        grade: number
+        more_id: string
+        shots: number
+        updated: string
+        user_id: string
+        __v: number
+        _id: string
+    }
 }
 

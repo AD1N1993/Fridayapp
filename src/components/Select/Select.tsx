@@ -5,8 +5,10 @@ import {setPageSizeAC} from "../../features/Packs/Packs-reducer";
 import {AppRootStateType} from "../../app/store";
 import s from "./Select.module.scss"
 
-
-export const Select = () => {
+type SelectPropsType ={
+    pageSize:string
+}
+export const Select = (props:SelectPropsType) => {
     const dispatch = useDispatch();
     const pageSize = useSelector<AppRootStateType,string>(state => state.packs.pageSize)
     const formik = useFormik({
@@ -21,7 +23,7 @@ export const Select = () => {
             <form onSubmit={formik.handleSubmit} onChange={formik.submitForm} className={s.filters}>
                 <select
                     name="choosePageSize"
-                    value={pageSize}
+                    value={props.pageSize}
                     onChange={formik.handleChange}
                     style={{display: 'block'}}
                 >

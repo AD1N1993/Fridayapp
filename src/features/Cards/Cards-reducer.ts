@@ -2,12 +2,11 @@ import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "../../app/store";
 import {CardsAPI, CardType, PostCardParamsType} from "../../api/api";
 import {SetStatusApp, setStatusAppAC} from "../../app/app-reducer";
-import {setCardPacksTotalCountAC, SetCardPacksTotalCountActionType, SetCurrentPageAC} from "../Packs/Packs-reducer";
+import {setCardPacksTotalCountAC, SetCardPacksTotalCountActionType, SetPageSize} from "../Packs/Packs-reducer";
 import {Dispatch} from "redux";
 
 const SET_CURRENT_CARD_PAGE = "SET_CURRENT_CARD_PAGE";
 const SET_PACKS_TOTAL_COUNT = "SET_PACKS_TOTAL_COUNT";
-const SET_PAGE_SIZE = "SET_PAGE_SIZE";
 
 const initialState: InitialStateType = {
     cards: [],
@@ -44,10 +43,7 @@ export const cardsReducer = (state: InitialStateType = initialState, action: Act
             }
         case "SET_CURRENT_PACK_USER_ID":
             return {...state, currentPackUserID: action.currentPackUserID}
-        // case SET_PAGE_SIZE:
-        //     return {
-        //         ...state, pageSize: action.pageSize
-        //     }
+
         default:
             return state
     }
@@ -98,6 +94,7 @@ type ActionsTypes =
     | SetStatusApp
     | ReturnType<typeof setCurrentCardPageAC>
     | ReturnType<typeof setCurrentPackUserIdAC>
+    |SetPageSize
 
 
 
