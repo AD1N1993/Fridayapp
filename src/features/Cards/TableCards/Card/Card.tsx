@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import styles from "./Card.module.scss"
-import backgroundPack from "../../../../assets/img/BackgroundPack.jpg"
-import {NavLink} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import backgroundPack from "../../../../assets/img/backgroundPack.jpg"
+import {useSelector} from "react-redux";
 import {CardType} from "../../../../api/api";
 import {AppRootStateType} from "../../../../app/store";
 
