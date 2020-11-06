@@ -15,7 +15,8 @@ const initialState: InitialStateType = {
     totalCardsCount: 0,
     currentPage: 1,
     currentPackID: "",
-    isFetching: false
+    isFetching: false,
+    currentPackUserID: ""
 }
 export type InitialStateType = {
     cards: Array<CardType>
@@ -24,6 +25,7 @@ export type InitialStateType = {
     currentPage: number
     isFetching: boolean
     currentPackID: string
+    currentPackUserID: string
 };
 
 export const cardsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
@@ -40,6 +42,8 @@ export const cardsReducer = (state: InitialStateType = initialState, action: Act
             return {
                 ...state, totalCardsCount: action.count
             }
+        case "SET_CURRENT_PACK_USER_ID":
+            return {...state, currentPackUserID: action.currentPackUserID}
         // case SET_PAGE_SIZE:
         //     return {
         //         ...state, pageSize: action.pageSize
@@ -53,6 +57,7 @@ export const cardsReducer = (state: InitialStateType = initialState, action: Act
 export const setCardsAC = (cards: Array<CardType>) => ({type: 'SET_CARDS', cards} as const)
 export const setCurrentPackIdAC = (packID: string) => ({type: 'SET_CURRENT_PACK_ID', packID} as const)
 export const setCurrentCardPageAC = (currentPage: number) => ({type: SET_CURRENT_CARD_PAGE, currentPage} as const)
+export const setCurrentPackUserIdAC = (currentPackUserID: string) => ({type: 'SET_CURRENT_PACK_USER_ID', currentPackUserID} as const)
 
 
 //Thunk creators
@@ -92,6 +97,7 @@ type ActionsTypes =
     | SetCardPacksTotalCountActionType
     | SetStatusApp
     | ReturnType<typeof setCurrentCardPageAC>
+    | ReturnType<typeof setCurrentPackUserIdAC>
 
 
 
