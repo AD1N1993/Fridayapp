@@ -22,7 +22,7 @@ const initialState: InitialStateType = {
     currentPage: 1,
     isFetching: false,
     findPackName: "",
-    min: 0,
+    min: 15,
     max: 20,
     update: "0update"
 }

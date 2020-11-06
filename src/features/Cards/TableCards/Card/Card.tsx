@@ -9,8 +9,8 @@ import {AppRootStateType} from "../../../../app/store";
 type PropsCardType = {
     card: CardType
 }
-
 export const Card = (props: PropsCardType) => {
+
     const myUserID = useSelector<AppRootStateType, string>(state => state.app.myUserID)
     // const dispatch = useDispatch()
     //
@@ -21,7 +21,7 @@ export const Card = (props: PropsCardType) => {
     //     dispatch(setCurrentPackIdAC(packID))
     // }
         const [ flip,setFlip] = useState(false)
-    return (
+        return (
         <>
 
             <div className={styles.box} >
