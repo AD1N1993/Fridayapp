@@ -9,7 +9,7 @@ const settings = {
 let localBack = "http://localhost:7542/2.0"
 let serverBack = "https://neko-back.herokuapp.com/2.0"
 const instance = axios.create({
-    baseURL: serverBack,
+    baseURL: localBack,
 
     ...settings
 })

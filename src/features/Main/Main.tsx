@@ -16,6 +16,9 @@ export const Main = () => {
             <h1>Welcome</h1>
             <h4>Cards for your mind v 1.0 beta</h4>
             <h4>Click Packs and start learning right now!</h4>
+            <label htmlFor="1">ddddddd
+                <input type="file" id={"1"} style={{display:"none"}}/>
+            </label>
         </>
     );
 }

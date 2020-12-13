@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../app/store";
 import {getCardsTC} from "../Cards/Cards-reducer";
 import {CardType} from "../../api/api";
-import {setCurrentCardAC, setRateThunk} from "./learningProcess-reducer";
+import {setCurrentCardAC, setCurrentCardRateAC, setRateThunk} from "./learningProcess-reducer";
 import {Card} from "../Cards/TableCards/Card/Card";
 import s from "./LearningProcess.module.scss"
 import styles from "../../common/styles/common.module.scss"
@@ -40,6 +40,8 @@ debugger
     const setCurrentCard = () => {
         let card = Math.floor(Math.random() * cards.length)
         dispatch(setCurrentCardAC(cards[card]))
+        if(currentCard?.grade)
+       dispatch(setCurrentCardRateAC(currentCard?.grade))
     }
 
     const openModalRemoveCard = (cardID: string) => {
